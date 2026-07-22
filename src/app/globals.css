@@ -116,7 +116,7 @@ html {
   display: flex;
   overflow: hidden;
   user-select: none;
-  gap: 24px;
+  gap: 32px;
   width: 100%;
 }
 
@@ -125,7 +125,7 @@ html {
   display: flex;
   justify-content: space-around;
   min-width: 100%;
-  gap: 24px;
-  animation: scroll-right 30s linear infinite;
+  gap: 32px;
+  animation: scroll-right 45s linear infinite;
 }
 

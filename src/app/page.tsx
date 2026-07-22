@@ -11,6 +11,13 @@ const partnerLogos = [
   { src: "/logos/tas-heel-dubai-uae-seeklogo.png", alt: "Tas-heel Services" },
   { src: "/logos/amer-seeklogo.png", alt: "Amer Services" },
   { src: "/logos/United Arab Emirates Vector Logo.jpg", alt: "United Arab Emirates" },
+  { src: "/logos/429-4297405_high-resolution-low-resolution-dubai-courts-logo.png", alt: "Dubai Courts" },
+  { src: "/logos/256007.png", alt: "Federal Authority for Identity and Citizenship (ICP)" },
+  { src: "/logos/department-of-economic-development-logo.png", alt: "Department of Economic Development" },
+  { src: "/logos/dha-medical-education-department-logo.png", alt: "Dubai Health Authority (DHA)" },
+  { src: "/logos/dubai-government-human-resources-dept-dghr-logo-png_seeklogo-365674.png", alt: "Dubai Government Human Resources Department (DGHR)" },
+  { src: "/logos/dubai-immigration-logo.png", alt: "GDRFA Dubai Immigration" },
+  { src: "/logos/dubai-police-logo-png_seeklogo-406444.png", alt: "Dubai Police" },
 ];
 
 export default function Home() {
@@ -108,7 +115,7 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       {/* Hero Slider */}
-      <section className="relative h-[80vh] min-h-[550px] overflow-hidden bg-black select-none">
+      <section className="relative h-screen min-h-[600px] overflow-hidden bg-black select-none">
         <div className="h-full relative">
           {/* Slide 1 */}
           <div
@@ -201,20 +208,20 @@ export default function Home() {
       </section>
 
       {/* UAE Government Bodies Marquee */}
-      <section className="py-10 bg-surface-container-low border-y border-border-light overflow-hidden select-none">
+      <section className="py-14 bg-primary border-y border-primary/40 overflow-hidden select-none">
         <div className="service-marquee">
-          <div className="marquee-content flex gap-6">
+          <div className="marquee-content flex gap-8">
             {partnerLogos.map((logo, idx) => (
-              <div key={`logo-1-${idx}`} className="bg-white px-6 py-3 rounded-xl border border-border-light flex items-center justify-center h-20 w-44 shadow-sm shrink-0">
-                <img src={logo.src} alt={logo.alt} className="max-h-12 max-w-full object-contain" />
+              <div key={`logo-1-${idx}`} className="bg-white px-8 py-5 rounded-2xl border border-border-light flex items-center justify-center h-32 w-64 shadow-md hover:shadow-lg transition-all duration-300 shrink-0">
+                <img src={logo.src} alt={logo.alt} className="max-h-24 max-w-[85%] object-contain transition-all duration-300" />
               </div>
             ))}
           </div>
           {/* Duplicated for seamless loop */}
-          <div className="marquee-content flex gap-6" aria-hidden="true">
+          <div className="marquee-content flex gap-8" aria-hidden="true">
             {partnerLogos.map((logo, idx) => (
-              <div key={`logo-2-${idx}`} className="bg-white px-6 py-3 rounded-xl border border-border-light flex items-center justify-center h-20 w-44 shadow-sm shrink-0">
-                <img src={logo.src} alt={logo.alt} className="max-h-12 max-w-full object-contain" />
+              <div key={`logo-2-${idx}`} className="bg-white px-8 py-5 rounded-2xl border border-border-light flex items-center justify-center h-32 w-64 shadow-md hover:shadow-lg transition-all duration-300 shrink-0">
+                <img src={logo.src} alt={logo.alt} className="max-h-24 max-w-[85%] object-contain transition-all duration-300" />
               </div>
             ))}
           </div>
