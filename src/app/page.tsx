@@ -12,13 +12,12 @@ const partnerLogos = [
   { src: "/logos/amer-seeklogo.png", alt: "Amer Services" },
   { src: "/logos/United Arab Emirates Vector Logo.jpg", alt: "United Arab Emirates" },
   { src: "/logos/429-4297405_high-resolution-low-resolution-dubai-courts-logo.png", alt: "Dubai Courts" },
-  { src: "/logos/256007.png", alt: "Federal Authority for Identity and Citizenship (ICP)" },
+  { src: "/logos/uaeicp-federal-authority-for-identity-citizenshi-seeklogo.png", alt: "Federal Authority for Identity, Citizenship, Customs and Port Security (ICP)" },
   { src: "/logos/department-of-economic-development-logo.png", alt: "Department of Economic Development" },
   { src: "/logos/dha-medical-education-department-logo.png", alt: "Dubai Health Authority (DHA)" },
   { src: "/logos/dubai-government-human-resources-dept-dghr-logo-png_seeklogo-365674.png", alt: "Dubai Government Human Resources Department (DGHR)" },
   { src: "/logos/dubai-immigration-logo.png", alt: "GDRFA Dubai Immigration" },
   { src: "/logos/dubai-police-logo-png_seeklogo-406444.png", alt: "Dubai Police" },
-  { src: "/logos/uaeicp-federal-authority-for-identity-citizenshi-seeklogo.png", alt: "Federal Authority for Identity, Citizenship, Customs and Port Security (ICP)" },
 ];
 
 export default function Home() {
