@@ -18,6 +18,7 @@ const partnerLogos = [
   { src: "/logos/dubai-government-human-resources-dept-dghr-logo-png_seeklogo-365674.png", alt: "Dubai Government Human Resources Department (DGHR)" },
   { src: "/logos/dubai-immigration-logo.png", alt: "GDRFA Dubai Immigration" },
   { src: "/logos/dubai-police-logo-png_seeklogo-406444.png", alt: "Dubai Police" },
+  { src: "/logos/uaeicp-federal-authority-for-identity-citizenshi-seeklogo.png", alt: "Federal Authority for Identity, Citizenship, Customs and Port Security (ICP)" },
 ];
 
 export default function Home() {
