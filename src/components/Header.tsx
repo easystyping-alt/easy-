@@ -61,14 +61,14 @@ export default function Header() {
         }`}
       >
         <div
-          className={`relative flex justify-between items-center w-full max-w-container-max mx-auto transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
+          className={`relative flex items-center w-full max-w-container-max mx-auto transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
             isZoomed
-              ? "min-h-[58px] py-2 px-8"
+              ? "min-h-[64px] py-2.5 px-8"
               : "min-h-[85px] py-4.5 px-6 md:px-12"
           }`}
         >
-          {/* Logo */}
-          <div className="flex items-center transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) origin-left">
+          {/* Logo (Absolute left) */}
+          <div className="absolute left-6 md:left-12 flex items-center transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) origin-left">
             <Link
               href="/"
               className={`bg-white/95 rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] border border-slate-200/30 flex items-center hover:bg-white transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) active:scale-95 select-none ${
@@ -79,22 +79,23 @@ export default function Header() {
                 alt="Easy Support Logo"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP-Ug6ncPOD3fi6ZLOPuhK2NSsGc-sww62E8fk4PJ7_feq9NddbFrogYKQ-dGbqAuyCAtZJ71Nbqs7Uv4dFLYPfH9E1VTCj7l5jIQdrHrPGk_QlEvH3d6M6QwpqrXMe9GLE4dEVXzcN_BCM3smyIClvXft15AVWLmIUqsL911BavidjvHBYPuX6BHLZ4O4KlHhuAqEp76W0oWJjt4THas2XGKkswdz9SWPFfPoxgdQpuHeIRxSd5QEuJUUoW9pJbOPOcACWd1BQ-9K"
                 className={`w-auto transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
-                  isZoomed ? "h-6" : "h-8"
+                  isZoomed ? "h-6.5" : "h-8"
                 }`}
               />
-              <span className={`hidden lg:inline font-headline font-bold tracking-tight transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
-                isZoomed ? "text-xs text-primary" : isHomepage ? "text-sm md:text-base text-white" : "text-sm md:text-base text-primary"
-              }`}>
+              <span className="hidden lg:inline font-headline font-bold text-primary tracking-tight">
                 Easy Support
               </span>
             </Link>
           </div>
  
+          {/* Left Spacer (flex-1) */}
+          <div className="flex-1" />
+ 
           {/* Desktop Nav Links */}
-          <nav className={`hidden md:flex items-center transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) origin-right ${
+          <nav className={`hidden md:flex items-center transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) origin-center ${
             isZoomed
-              ? "gap-1 bg-transparent p-0"
-              : "gap-3.5 md:gap-5 bg-transparent p-0"
+              ? "gap-2 bg-transparent p-0"
+              : "gap-4 md:gap-5 bg-transparent p-0"
           }`}>
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -102,22 +103,22 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`font-semibold rounded-full transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
+                  className={`font-semibold rounded-full border transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
                     isZoomed
-                      ? "text-xs px-3 py-1.5"
-                      : "text-sm md:text-base px-5.5 py-3"
+                      ? "text-sm px-4.5 py-1.5"
+                      : "text-sm md:text-base px-6 py-2.5"
                   } ${
                     isActive
                       ? isZoomed
-                        ? "text-primary bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] border border-slate-200/30"
+                        ? "text-primary bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] border-slate-200/30"
                         : isHomepage
-                          ? "text-white bg-white/20 border border-white/20"
-                          : "text-primary bg-slate-100 border border-slate-200/30"
+                          ? "text-white bg-white/20 border-white/30"
+                          : "text-primary bg-slate-100 border-slate-200/30"
                       : isZoomed
-                        ? "text-on-surface-variant hover:text-primary hover:bg-slate-50/50"
+                        ? "text-on-surface-variant bg-slate-50/20 border-transparent hover:border-slate-200/30 hover:bg-slate-50/60"
                         : isHomepage
-                          ? "text-white/90 hover:text-white hover:bg-white/10"
-                          : "text-on-surface-variant hover:text-primary hover:bg-slate-100/50"
+                          ? "text-white/90 bg-white/5 border-transparent hover:border-white/20 hover:bg-white/10"
+                          : "text-on-surface-variant bg-slate-50/10 border-transparent hover:border-slate-200/30 hover:bg-slate-50/40"
                   }`}
                 >
                   {link.name}
@@ -130,8 +131,8 @@ export default function Header() {
               href="/contact"
               className={`rounded-full font-bold transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) active:scale-95 border ${
                 isZoomed
-                  ? "text-xs px-4 py-1.5"
-                  : "text-sm md:text-base px-5.5 py-3"
+                  ? "text-sm px-5 py-1.5"
+                  : "text-sm md:text-base px-6.5 py-2.5"
               } ${
                 isHomepage && !isZoomed
                   ? "bg-white text-primary border-white hover:bg-white/90 shadow-[0_4px_12px_rgba(255,255,255,0.15)]"
@@ -144,8 +145,11 @@ export default function Header() {
             </Link>
           </nav>
  
+          {/* Right Spacer (transitioning from flex-none to flex-1) */}
+          <div className={`transition-all duration-700 ${isZoomed ? "flex-1" : "flex-none w-0"}`} />
+ 
           {/* Hamburger Menu Wrapper (aligned right) */}
-          <div className="flex md:hidden items-center transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) origin-right">
+          <div className="absolute right-6 md:right-12 flex items-center transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) origin-right">
             {/* Hamburger Button for Mobile */}
             <button
               onClick={() => setIsDrawerOpen(!isDrawerOpen)}
