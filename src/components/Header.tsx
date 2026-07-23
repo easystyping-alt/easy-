@@ -47,7 +47,7 @@ export default function Header() {
   const currentScaleClass = isHomepage
     ? isZoomed
       ? "scale-105"
-      : "scale-90 md:scale-95"
+      : "scale-100"
     : "scale-100";
  
   return (
@@ -56,21 +56,17 @@ export default function Header() {
       <header
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
-          isHomepage
-            ? isZoomed
-              ? "bg-white/70 backdrop-blur-xl border-b border-white/30 shadow-[0_4px_30px_rgba(0,0,0,0.02),inset_0_1px_0_rgba(255,255,255,0.6)]"
-              : "bg-transparent border-b border-transparent shadow-none"
-            : "bg-white/70 backdrop-blur-xl border-b border-white/30 shadow-[0_4px_30px_rgba(0,0,0,0.02),inset_0_1px_0_rgba(255,255,255,0.6)]"
+        className={`fixed left-0 right-0 z-50 mx-auto transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
+          isZoomed
+            ? "w-[90%] md:w-[85%] max-w-container-max mt-4 rounded-full bg-white/80 backdrop-blur-xl border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
+            : isHomepage
+              ? "w-full mt-0 rounded-none bg-transparent border-b border-transparent shadow-none"
+              : "w-full mt-0 rounded-none bg-white/70 backdrop-blur-xl border-b border-white/30 shadow-[0_4px_30px_rgba(0,0,0,0.02),inset_0_1px_0_rgba(255,255,255,0.6)]"
         }`}
       >
         <div
-          className={`relative flex justify-center items-center w-full px-6 max-w-container-max mx-auto min-h-[73px] transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
-            isHomepage
-              ? isZoomed
-                ? "py-5 translate-y-1.5"
-                : "py-2.5 translate-y-0"
-              : "py-3.5 translate-y-0"
+          className={`relative flex justify-center items-center w-full px-8 max-w-container-max mx-auto min-h-[73px] transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
+            isZoomed ? "py-3 px-10" : "py-4 px-6"
           }`}
         >
           {/* Logo */}
