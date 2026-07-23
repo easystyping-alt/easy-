@@ -9,7 +9,6 @@ export default function Header() {
   const [isHomepage, setIsHomepage] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
  
   useEffect(() => {
     setIsHomepage(pathname === "/");
@@ -28,7 +27,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
  
-  const isZoomed = isScrolled || isHovered;
+  const isZoomed = isScrolled;
  
   const navLinks = [
     { name: "Home", href: "/" },
@@ -50,8 +49,6 @@ export default function Header() {
     <>
       {/* Top Navbar */}
       <header
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         className={`fixed left-0 right-0 z-50 mx-auto transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
           isZoomed
             ? "w-[90%] md:w-[85%] max-w-container-max mt-4 rounded-full bg-white/80 backdrop-blur-xl border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
