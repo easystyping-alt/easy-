@@ -4,11 +4,14 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-on-secondary-fixed text-surface py-16 mt-auto">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter px-6 max-w-container-max mx-auto">
+    <footer className="bg-on-secondary-fixed text-surface py-10 md:py-16 mt-auto">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 px-6 max-w-container-max mx-auto">
         {/* Branding & Contact Column */}
         <div className="space-y-6">
-          <div className="text-headline-md font-headline font-bold text-surface">Easy Support</div>
+          <div className="flex flex-col items-start" style={{ marginLeft: "4px" }}>
+            <div className="font-sans" style={{ color: "#ffffff", fontSize: "20px", fontWeight: 600, letterSpacing: "0.2px", lineHeight: "1" }}>EASY SUPPORT TYPING SERVICES</div>
+            <div className="font-sans" style={{ color: "#ffffff", fontSize: "15px", fontWeight: 700, letterSpacing: "0px", lineHeight: "1", marginTop: "4px" }}>ايزي سابورت لخدمات الطباعة</div>
+          </div>
           <p className="text-surface-variant opacity-80 font-body text-sm leading-relaxed">
             Your trusted partner for corporate services, PRO solutions, and business establishment in the Emirates since 2009.
           </p>

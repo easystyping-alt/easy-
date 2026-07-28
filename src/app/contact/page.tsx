@@ -33,15 +33,15 @@ export default function Contact() {
     <div className="max-w-container-max mx-auto px-6 py-12 md:py-20">
       {/* Page Title */}
       <section className="mb-12 text-center lg:text-left space-y-4">
-        <h1 className="font-headline font-bold text-4xl md:text-5xl text-primary">Contact Our Specialists</h1>
+        <h1 className="font-headline font-bold text-3xl md:text-5xl text-primary">Contact Our Specialists</h1>
         <p className="font-sans text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
           Have questions about visa processing, PRO liaison, or company setup in Dubai? Our expert team is ready to guide you.
         </p>
       </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
         {/* Contact Form */}
-        <div className="lg:col-span-7 bg-surface-container-lowest border border-border-light rounded-2xl p-8 shadow-sm">
+        <div className="lg:col-span-7 bg-surface-container-lowest border border-border-light rounded-2xl p-6 md:p-8 shadow-sm">
           <h2 className="font-headline text-2xl font-bold text-primary mb-6">Send Us a Message</h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -134,7 +134,7 @@ export default function Contact() {
         {/* Office details and Quick contact details */}
         <div className="lg:col-span-5 space-y-8">
           {/* Contact Details Card */}
-          <div className="bg-surface-container-low border border-border-light rounded-2xl p-8 space-y-6">
+          <div className="bg-surface-container-low border border-border-light rounded-2xl p-6 md:p-8 space-y-6">
             <h3 className="font-headline text-xl font-bold text-primary">Office Details</h3>
             <div className="space-y-4">
               <div className="flex items-start gap-4">

@@ -34,16 +34,16 @@ export default function About() {
   }, []);
 
   return (
-    <div ref={sectionsRef} className="overflow-x-hidden">
+    <div ref={sectionsRef}>
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 pb-20 bg-surface-bright hero-pattern">
+      <section className="relative overflow-hidden pt-16 pb-12 md:pt-20 md:pb-20 bg-surface-bright hero-pattern">
         <div className="max-w-container-max mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="flex-1 space-y-6">
               <span className="inline-block px-4 py-1.5 bg-secondary-fixed text-on-secondary-fixed font-mono text-xs font-semibold rounded-full tracking-wider uppercase">
                 Our Identity
               </span>
-              <h1 className="font-headline font-bold text-4xl md:text-5xl lg:text-6xl text-primary leading-tight">
+              <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-primary leading-tight">
                 Gateway to All <br /> Government Transactions
               </h1>
               <p className="text-body-lg text-text-muted max-w-xl leading-relaxed">
@@ -72,9 +72,9 @@ export default function About() {
       </section>
 
       {/* Company Overview Section */}
-      <section className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-20 bg-white">
+      <section className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-12 md:py-20 bg-white">
         <div className="max-w-container-max mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center">
             <div className="lg:col-span-6 relative order-2 lg:order-1">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 pt-8">
@@ -108,7 +108,7 @@ export default function About() {
 
             <div className="lg:col-span-6 space-y-6 order-1 lg:order-2">
               <div className="space-y-2">
-                <h2 className="font-headline text-3xl font-bold text-primary">About Our Excellence</h2>
+                <h2 className="font-headline text-2xl md:text-3xl font-bold text-primary">About Our Excellence</h2>
                 <div className="h-1.5 w-24 bg-secondary rounded-full"></div>
               </div>
               <p className="font-sans text-body-md text-on-surface-variant leading-relaxed">
@@ -136,24 +136,24 @@ export default function About() {
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-20 bg-surface-soft-blue">
+      <section className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-12 md:py-20 bg-surface-soft-blue">
         <div className="max-w-container-max mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Mission */}
-            <div className="md:col-span-8 bg-primary text-on-primary p-12 rounded-3xl relative overflow-hidden group shadow-xl flex flex-col justify-center">
+            <div className="md:col-span-8 bg-primary text-on-primary p-8 md:p-12 rounded-3xl relative overflow-hidden group shadow-xl flex flex-col justify-center">
               <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>
                     flight_takeoff
                   </span>
-                  <h3 className="font-headline text-2xl md:text-3xl font-bold">Our Mission</h3>
+                  <h3 className="font-headline text-xl md:text-3xl font-bold">Our Mission</h3>
                 </div>
                 <p className="font-sans text-body-lg opacity-90 max-w-2xl leading-relaxed">
                   To provide wings to the dreams of budding entrepreneurs and let them fly high in the Middle East by navigating the complexities of business setup with ease and expertise.
                 </p>
               </div>
               <div className="absolute right-0 bottom-0 opacity-10 group-hover:scale-110 transition-transform duration-700 pointer-events-none select-none">
-                <span className="material-symbols-outlined text-[260px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                <span className="material-symbols-outlined text-[160px] md:text-[260px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                   rocket_launch
                 </span>
               </div>
@@ -169,29 +169,29 @@ export default function About() {
             </div>
 
             {/* Vision */}
-            <div className="md:col-span-5 bg-secondary text-on-primary p-10 rounded-3xl relative overflow-hidden group shadow-lg flex flex-col justify-center">
+            <div className="md:col-span-5 bg-secondary text-on-primary p-8 md:p-10 rounded-3xl relative overflow-hidden group shadow-lg flex flex-col justify-center">
               <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>
                     visibility
                   </span>
-                  <h3 className="font-headline text-2xl font-bold">Our Vision</h3>
+                  <h3 className="font-headline text-xl md:text-2xl font-bold">Our Vision</h3>
                 </div>
                 <p className="font-sans text-sm opacity-90 leading-relaxed">
                   To be the best in business consultancy that hands out the best-in-class results to our prestigious clients through innovation and commitment.
                 </p>
               </div>
               <div className="absolute right-0 bottom-0 opacity-15 group-hover:scale-110 transition-transform duration-700 pointer-events-none select-none">
-                <span className="material-symbols-outlined text-[200px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                <span className="material-symbols-outlined text-[120px] md:text-[200px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                   emoji_objects
                 </span>
               </div>
             </div>
 
             {/* Philosophy */}
-            <div className="md:col-span-7 bg-white p-10 rounded-3xl border border-border-light shadow-lg flex flex-col md:flex-row gap-8 items-center justify-between">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
+            <div className="md:col-span-7 bg-white p-8 md:p-10 rounded-3xl border border-border-light shadow-lg flex flex-col md:flex-row gap-6 md:gap-8 items-center justify-between">
+              <div className="space-y-4 text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-3">
                   <span className="material-symbols-outlined text-primary text-3xl">psychology</span>
                   <h3 className="font-headline text-xl font-bold text-primary">Our Philosophy</h3>
                 </div>
@@ -208,10 +208,10 @@ export default function About() {
       </section>
 
       {/* Leadership Message Section */}
-      <section className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-20 bg-white overflow-hidden">
+      <section className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-12 md:py-20 bg-white overflow-hidden">
         <div className="max-w-container-max mx-auto px-6 space-y-12">
           {/* Card 1: Abdul Hakkim */}
-          <div className="bg-surface-bright rounded-[40px] p-8 md:p-16 border border-border-light relative">
+          <div className="bg-surface-bright rounded-[40px] p-6 md:p-16 border border-border-light relative">
             <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none select-none">
               <span className="material-symbols-outlined text-[240px]">handshake</span>
             </div>
@@ -228,7 +228,7 @@ export default function About() {
                 <div className="absolute -top-6 -left-6 w-32 h-32 bg-secondary/20 rounded-full blur-2xl -z-0"></div>
               </div>
               <div className="flex-1 space-y-6">
-                <h2 className="font-headline text-3xl font-bold text-primary">A Message from Our Leadership</h2>
+                <h2 className="font-headline text-2xl md:text-3xl font-bold text-primary">A Message from Our Leadership</h2>
                 <div className="h-1 w-20 bg-secondary"></div>
                 <div className="space-y-4 text-on-surface-variant font-sans text-body-md leading-relaxed italic relative">
                   <span className="material-symbols-outlined text-secondary/20 text-7xl absolute -top-10 -left-6 pointer-events-none select-none">
@@ -248,7 +248,7 @@ export default function About() {
           </div>
 
           {/* Card 2: Rashid.V */}
-          <div className="bg-surface-bright rounded-[40px] p-8 md:p-16 border border-border-light relative">
+          <div className="bg-surface-bright rounded-[40px] p-6 md:p-16 border border-border-light relative">
             <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none select-none">
               <span className="material-symbols-outlined text-[240px]">handshake</span>
             </div>
@@ -265,7 +265,7 @@ export default function About() {
                 <div className="absolute -top-6 -left-6 w-32 h-32 bg-secondary/20 rounded-full blur-2xl -z-0"></div>
               </div>
               <div className="flex-1 space-y-6">
-                <h2 className="font-headline text-3xl font-bold text-primary">A Message from Our Leadership</h2>
+                <h2 className="font-headline text-2xl md:text-3xl font-bold text-primary">A Message from Our Leadership</h2>
                 <div className="h-1 w-20 bg-secondary"></div>
                 <div className="space-y-4 text-on-surface-variant font-sans text-body-md leading-relaxed italic relative">
                   <span className="material-symbols-outlined text-secondary/20 text-7xl absolute -top-10 -left-6 pointer-events-none select-none">
@@ -287,11 +287,11 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-20 bg-surface-soft-blue">
+      <section className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-12 md:py-20 bg-surface-soft-blue">
         <div className="max-w-container-max mx-auto px-6">
-          <div className="bg-primary-container rounded-3xl p-12 text-center text-on-primary-container relative overflow-hidden">
+          <div className="bg-primary-container rounded-3xl p-8 md:p-12 text-center text-on-primary-container relative overflow-hidden">
             <div className="relative z-10 space-y-6">
-              <h2 className="font-headline font-bold text-3xl md:text-5xl max-w-3xl mx-auto text-white">
+              <h2 className="font-headline font-bold text-2xl md:text-5xl max-w-3xl mx-auto text-white">
                 Ready to Start Your Dubai Journey?
               </h2>
               <p className="font-sans text-body-lg opacity-85 max-w-xl mx-auto text-white/95">

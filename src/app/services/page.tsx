@@ -173,9 +173,9 @@ export default function Services() {
   ];
 
   return (
-    <div ref={containerRef} className="overflow-x-hidden">
+    <div ref={containerRef}>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden bg-black text-white">
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-black text-white">
         <div className="absolute inset-0 z-0">
           <img
             className="w-full h-full object-cover opacity-60"
@@ -189,7 +189,7 @@ export default function Services() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-white font-mono text-xs font-semibold uppercase tracking-wider">
               Premium Government Liaison
             </span>
-            <h1 className="font-headline font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
+            <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight">
               Seamless Government <br /> <span className="text-secondary-container font-headline">Solutions in Dubai.</span>
             </h1>
             <p className="font-sans text-body-lg text-white/90 leading-relaxed max-w-2xl">
@@ -214,9 +214,9 @@ export default function Services() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="py-20 px-6 max-w-container-max mx-auto">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Our Comprehensive Services</h2>
+      <section className="py-12 md:py-20 px-6 max-w-container-max mx-auto">
+        <div className="text-center mb-10 md:mb-16 space-y-4">
+          <h2 className="font-headline text-2xl md:text-4xl font-bold text-primary">Our Comprehensive Services</h2>
           <p className="font-sans text-body-md text-text-muted max-w-2xl mx-auto">
             Your one-stop destination for all government documentation, corporate registration, and PRO services in the UAE.
           </p>
@@ -227,7 +227,7 @@ export default function Services() {
             <div
               key={index}
               style={{ transitionDelay: `${index * 50}ms` }}
-              className="service-card opacity-0 translate-y-8 transition-all duration-700 bg-surface-container-lowest border border-border-light p-8 rounded-xl hover:border-secondary hover:shadow-[0_20px_40px_-15px_rgba(35,74,156,0.1)] flex flex-col justify-between"
+              className="service-card opacity-0 translate-y-8 transition-all duration-700 bg-surface-container-lowest border border-border-light p-6 md:p-8 rounded-xl hover:border-secondary hover:shadow-[0_20px_40px_-15px_rgba(35,74,156,0.1)] flex flex-col justify-between"
             >
               <div>
                 <div className={`w-12 h-12 rounded-lg ${service.bgColor} flex items-center justify-center ${service.textColor} mb-6 transition-transform hover:scale-110`}>
@@ -250,10 +250,10 @@ export default function Services() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-20 bg-primary text-on-primary relative overflow-hidden">
+      <section className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-12 md:py-20 bg-primary text-on-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
         <div className="max-w-container-max mx-auto px-6 text-center relative z-10 space-y-6">
-          <h2 className="font-headline text-3xl md:text-5xl font-bold">Ready to get started?</h2>
+          <h2 className="font-headline text-2xl md:text-5xl font-bold">Ready to get started?</h2>
           <p className="font-sans text-body-lg text-on-primary-container max-w-xl mx-auto opacity-90 leading-relaxed">
             Contact our specialists today for a free consultation on your government or business requirements.
           </p>
@@ -277,10 +277,10 @@ export default function Services() {
       </section>
 
       {/* Branches Network Section */}
-      <section id="branches" className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-20 px-6 max-w-container-max mx-auto scroll-mt-20">
+      <section id="branches" className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-12 md:py-20 px-6 max-w-container-max mx-auto scroll-mt-20">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="w-full lg:w-1/2 space-y-6">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Our Branch Network</h2>
+            <h2 className="font-headline text-2xl md:text-4xl font-bold text-primary">Our Branch Network</h2>
             <p className="font-sans text-body-md text-text-muted leading-relaxed">
               We are strategically located across Dubai to serve you better. Visit any of our branches for premium service.
             </p>
@@ -300,7 +300,7 @@ export default function Services() {
               ))}
             </div>
           </div>
-          <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-2xl h-[400px]">
+          <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-2xl h-[300px] md:h-[400px]">
             <div className="w-full h-full bg-surface-container-highest flex items-center justify-center relative">
               <img
                 className="w-full h-full object-cover"

@@ -113,7 +113,7 @@ export default function Home() {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <div>
       {/* Hero Slider */}
       <section className="relative h-screen min-h-[600px] overflow-hidden bg-black select-none">
         <div className="h-full relative">
@@ -132,7 +132,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-black/60"></div>
             </div>
             <div className="relative z-10 max-w-4xl mx-auto space-y-6">
-              <h1 className="font-headline font-bold text-4xl md:text-6xl text-white leading-tight drop-shadow-lg">
+              <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg">
                 We Build the Base,<br />You Build the Brand
               </h1>
               <p className="font-sans text-body-lg text-white/90 max-w-2xl mx-auto drop-shadow">
@@ -170,7 +170,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-black/60"></div>
             </div>
             <div className="relative z-10 max-w-4xl mx-auto space-y-6">
-              <h1 className="font-headline font-bold text-4xl md:text-6xl text-white leading-tight drop-shadow-lg">
+              <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg">
                 Your Trusted UAE PRO &amp;<br />Business Setup Partner
               </h1>
               <p className="font-sans text-body-lg text-white/90 max-w-2xl mx-auto drop-shadow">
@@ -208,20 +208,20 @@ export default function Home() {
       </section>
 
       {/* UAE Government Bodies Marquee */}
-      <section className="py-14 bg-primary border-y border-primary/40 overflow-hidden select-none">
+      <section className="py-8 md:py-14 bg-primary border-y border-primary/40 overflow-hidden select-none">
         <div className="service-marquee">
-          <div className="marquee-content flex gap-8">
+          <div className="marquee-content flex gap-4 md:gap-8">
             {partnerLogos.map((logo, idx) => (
-              <div key={`logo-1-${idx}`} className="bg-white px-8 py-5 rounded-2xl border border-border-light flex items-center justify-center h-32 w-64 shadow-md hover:shadow-lg transition-all duration-300 shrink-0">
-                <img src={logo.src} alt={logo.alt} className="max-h-24 max-w-[85%] object-contain transition-all duration-300" />
+              <div key={`logo-1-${idx}`} className="bg-white px-4 md:px-8 py-3 md:py-5 rounded-xl md:rounded-2xl border border-border-light flex items-center justify-center h-20 md:h-32 w-48 md:w-64 shadow-md hover:shadow-lg transition-all duration-300 shrink-0">
+                <img src={logo.src} alt={logo.alt} className="max-h-12 md:max-h-24 max-w-[85%] object-contain transition-all duration-300" />
               </div>
             ))}
           </div>
           {/* Duplicated for seamless loop */}
-          <div className="marquee-content flex gap-8" aria-hidden="true">
+          <div className="marquee-content flex gap-4 md:gap-8" aria-hidden="true">
             {partnerLogos.map((logo, idx) => (
-              <div key={`logo-2-${idx}`} className="bg-white px-8 py-5 rounded-2xl border border-border-light flex items-center justify-center h-32 w-64 shadow-md hover:shadow-lg transition-all duration-300 shrink-0">
-                <img src={logo.src} alt={logo.alt} className="max-h-24 max-w-[85%] object-contain transition-all duration-300" />
+              <div key={`logo-2-${idx}`} className="bg-white px-4 md:px-8 py-3 md:py-5 rounded-xl md:rounded-2xl border border-border-light flex items-center justify-center h-20 md:h-32 w-48 md:w-64 shadow-md hover:shadow-lg transition-all duration-300 shrink-0">
+                <img src={logo.src} alt={logo.alt} className="max-h-12 md:max-h-24 max-w-[85%] object-contain transition-all duration-300" />
               </div>
             ))}
           </div>
@@ -229,8 +229,8 @@ export default function Home() {
       </section>
 
       {/* About Preview Section */}
-      <section className="py-20 px-6 max-w-container-max mx-auto overflow-hidden">
-        <div className="grid md:grid-cols-12 gap-12 items-center">
+      <section className="py-12 md:py-20 px-6 max-w-container-max mx-auto overflow-hidden">
+        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
           <div className="md:col-span-5 relative scroll-reveal-left opacity-0 -translate-x-12 transition-all duration-1000 ease-out">
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-secondary-fixed opacity-30 rounded-full blur-3xl"></div>
             <div className="rounded-xl overflow-hidden relative z-10 border border-border-light shadow-xl">
@@ -249,7 +249,7 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 text-secondary font-mono text-xs tracking-widest uppercase">
               <span className="w-8 h-[2px] bg-secondary"></span> About Us
             </div>
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary leading-snug">
+            <h2 className="font-headline text-2xl md:text-4xl font-bold text-primary leading-snug">
               Your Premium Gateway to All Government Transactions
             </h2>
             <p className="font-sans text-body-md text-on-surface-variant leading-relaxed">
@@ -277,22 +277,22 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-surface-soft-blue">
+      <section className="py-12 md:py-20 bg-surface-soft-blue">
         <div className="px-6 max-w-container-max mx-auto">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Why Entrepreneurs Trust Easy Support</h2>
+          <div className="text-center mb-10 md:mb-16 space-y-4">
+            <h2 className="font-headline text-2xl md:text-4xl font-bold text-primary">Why Entrepreneurs Trust Easy Support</h2>
             <p className="font-sans text-body-md text-on-surface-variant max-w-2xl mx-auto">
               Providing wings to the dreams of budding entrepreneurs across the Middle East with institutional stability.
             </p>
           </div>
           <div className="grid md:grid-cols-4 gap-6">
             {/* Large Bento Card */}
-            <div className="md:col-span-2 md:row-span-2 bg-surface-container-lowest p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-light group flex flex-col justify-between">
-              <div className="space-y-6">
-                <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                  <span className="material-symbols-outlined text-4xl">handshake</span>
+            <div className="md:col-span-2 md:row-span-2 bg-surface-container-lowest p-6 md:p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-light group flex flex-col justify-between">
+              <div className="space-y-4 md:space-y-6">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                  <span className="material-symbols-outlined text-3xl md:text-4xl">handshake</span>
                 </div>
-                <h3 className="text-2xl font-headline font-semibold text-primary">Institutional Stability</h3>
+                <h3 className="text-xl md:text-2xl font-headline font-semibold text-primary">Institutional Stability</h3>
                 <p className="font-sans text-sm text-on-surface-variant leading-relaxed">
                   Our deep-rooted connections with government agencies like Amer, Tas-heel, and the Dubai Economy Department allow us to navigate bureaucracy with unrivaled precision.
                 </p>
@@ -303,10 +303,10 @@ export default function Home() {
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4AURzrn-q3Ht-mFbYDeyVMJEpoczJZTY7nOLIIEQo7mnArLuV71td4NpA_qWJD5j9iWEBDRAqr1ztLE8Wepn-WCUhlQC4svlBvGSAMBDndQUeOqz_Ymexq4PLH7TQKISIjQZNCCS_O7ePYtYA5XV69xVy2z8b5-ZnKNfqu4tFtC-nHrghojEc7xVmgKW4A0AqDSPCCyAMkZfhCKp_8m0LPC-rTU2HtbeL2TsTC9ek6lkuFa2KyaBMSKiwbrx6guUsAV9IOzSPTvsj"
               />
             </div>
-
+ 
             {/* Small Bento Card 1 */}
-            <div className="bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-light group">
-              <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors mb-6">
+            <div className="bg-surface-container-lowest p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-light group">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors mb-4 md:mb-6">
                 <span className="material-symbols-outlined text-2xl">schedule</span>
               </div>
               <h3 className="text-xl font-headline font-semibold text-primary mb-2">Efficiency</h3>
@@ -314,10 +314,10 @@ export default function Home() {
                 Real-time status updates and accelerated filing times for all visas.
               </p>
             </div>
-
+ 
             {/* Small Bento Card 2 */}
-            <div className="bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-light group">
-              <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors mb-6">
+            <div className="bg-surface-container-lowest p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-light group">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors mb-4 md:mb-6">
                 <span className="material-symbols-outlined text-2xl">fact_check</span>
               </div>
               <h3 className="text-xl font-headline font-semibold text-primary mb-2">Precision</h3>
@@ -325,11 +325,11 @@ export default function Home() {
                 Expert proofreading and legal accuracy in every translation.
               </p>
             </div>
-
+ 
             {/* Double Bento Card */}
-            <div className="md:col-span-2 bg-primary p-8 rounded-2xl shadow-lg flex items-center gap-8 text-white relative overflow-hidden">
+            <div className="md:col-span-2 bg-primary p-6 md:p-8 rounded-2xl shadow-lg flex items-center gap-4 md:gap-8 text-white relative overflow-hidden">
               <div className="relative z-10 space-y-4">
-                <h3 className="text-2xl font-headline font-semibold">Need a Cost Estimate?</h3>
+                <h3 className="text-xl md:text-2xl font-headline font-semibold">Need a Cost Estimate?</h3>
                 <p className="text-white/80 text-sm max-w-sm">
                   Use our smart calculator to estimate your business setup or visa costs instantly.
                 </p>
@@ -351,14 +351,14 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="px-6 max-w-container-max mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6 text-center md:text-left">
-            <div className="space-y-4">
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-8 md:mb-12 gap-6 text-center md:text-left">
+            <div className="space-y-3 md:space-y-4">
               <div className="inline-block px-4 py-1.5 bg-secondary-fixed text-primary font-mono text-xs font-semibold rounded-full uppercase">
                 Success Stories
               </div>
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">What Our Clients Say</h2>
+              <h2 className="font-headline text-2xl md:text-4xl font-bold text-primary">What Our Clients Say</h2>
             </div>
             <div className="flex gap-4 justify-center md:justify-end w-full md:w-auto">
               <button

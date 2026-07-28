@@ -73,7 +73,7 @@ export default function Calculator() {
     <div className="max-w-container-max mx-auto px-6 py-12 md:py-20">
       {/* Hero Section */}
       <section className="mb-12 text-center lg:text-left space-y-4">
-        <h1 className="font-headline font-bold text-4xl md:text-5xl text-primary">
+        <h1 className="font-headline font-bold text-3xl md:text-5xl text-primary">
           UAE Business Setup Cost Calculator
         </h1>
         <p className="font-sans text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
@@ -84,7 +84,7 @@ export default function Calculator() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Calculator Main Section */}
         <div className="lg:col-span-8 space-y-8">
-          <div className="bg-surface-container-lowest border border-border-light rounded-2xl p-8 shadow-sm hover:shadow-md transition-all">
+          <div className="bg-surface-container-lowest border border-border-light rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all">
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               {/* Business Type */}
               <div className="space-y-2">
@@ -181,7 +181,7 @@ export default function Calculator() {
           </div>
 
           {/* Results Display */}
-          <div className="bg-primary text-on-primary rounded-2xl p-8 relative overflow-hidden shadow-lg">
+          <div className="bg-primary text-on-primary rounded-2xl p-6 md:p-8 relative overflow-hidden shadow-lg">
             <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none select-none">
               <span className="material-symbols-outlined scale-[6]" style={{ fontVariationSettings: "'FILL' 1" }}>
                 payments
@@ -195,7 +195,7 @@ export default function Calculator() {
                 <div className="flex items-baseline gap-2">
                   <span className="text-xl font-bold text-white/90">AED</span>
                   <span
-                    className={`text-5xl md:text-6xl font-headline font-bold leading-none text-white transition-all duration-300 ${
+                    className={`text-4xl md:text-6xl font-headline font-bold leading-none text-white transition-all duration-300 ${
                       pulse ? "scale-105 text-secondary-container" : "scale-100"
                     }`}
                   >

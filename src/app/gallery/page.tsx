@@ -52,7 +52,7 @@ export default function Gallery() {
     <div className="max-w-container-max mx-auto px-6 py-12 md:py-20">
       {/* Hero Section */}
       <section className="mb-12 text-center lg:text-left space-y-4">
-        <h1 className="font-headline font-bold text-4xl md:text-5xl text-primary">Office Gallery</h1>
+        <h1 className="font-headline font-bold text-3xl md:text-5xl text-primary">Office Gallery</h1>
         <p className="font-sans text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
           Take a virtual tour of our offices across the UAE, see our professional team in action, and explore our operations.
         </p>

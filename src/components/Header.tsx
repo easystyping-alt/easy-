@@ -6,13 +6,9 @@ import { usePathname } from "next/navigation";
  
 export default function Header() {
   const pathname = usePathname();
-  const [isHomepage, setIsHomepage] = useState(false);
+  const isHomepage = pathname === "/";
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
- 
-  useEffect(() => {
-    setIsHomepage(pathname === "/");
-  }, [pathname]);
  
   useEffect(() => {
     const handleScroll = () => {
@@ -49,7 +45,7 @@ export default function Header() {
     <>
       {/* Top Navbar */}
       <header
-        className={`fixed left-0 right-0 z-50 mx-auto transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
+        className={`fixed left-0 right-0 z-50 mx-auto transition-all duration-500 ease-in-out ${
           isZoomed
             ? "w-[90%] md:w-[85%] max-w-container-max mt-4 rounded-full bg-white/80 backdrop-blur-xl border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
             : isHomepage
@@ -58,30 +54,38 @@ export default function Header() {
         }`}
       >
         <div
-          className={`relative flex items-center w-full max-w-container-max mx-auto transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
+          className={`relative flex items-center w-full max-w-container-max mx-auto transition-all duration-500 ease-in-out ${
             isZoomed
               ? "min-h-[64px] py-2.5 px-8"
               : "min-h-[85px] py-4.5 px-6 md:px-12"
           }`}
         >
-          {/* Logo (Absolute left) */}
-          <div className="absolute left-6 md:left-12 flex items-center transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) origin-left">
+          {/* Logo */}
+          <div className="flex items-center transition-all duration-500 ease-in-out origin-left z-10">
             <Link
               href="/"
-              className={`bg-white/95 rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] border border-slate-200/30 flex items-center hover:bg-white transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) active:scale-95 select-none ${
-                isZoomed ? "px-3.5 py-1.5 gap-1.5" : "px-5 py-2.5 gap-2.5"
+              className={`flex items-center transition-all duration-500 ease-in-out active:scale-95 select-none ${
+                isZoomed ? "gap-1.5" : "gap-2.5"
               }`}
             >
               <img
                 alt="Easy Support Logo"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP-Ug6ncPOD3fi6ZLOPuhK2NSsGc-sww62E8fk4PJ7_feq9NddbFrogYKQ-dGbqAuyCAtZJ71Nbqs7Uv4dFLYPfH9E1VTCj7l5jIQdrHrPGk_QlEvH3d6M6QwpqrXMe9GLE4dEVXzcN_BCM3smyIClvXft15AVWLmIUqsL911BavidjvHBYPuX6BHLZ4O4KlHhuAqEp76W0oWJjt4THas2XGKkswdz9SWPFfPoxgdQpuHeIRxSd5QEuJUUoW9pJbOPOcACWd1BQ-9K"
-                className={`w-auto transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
-                  isZoomed ? "h-6.5" : "h-8"
+                className={`w-auto transition-all duration-500 ease-in-out ${
+                  isZoomed ? "h-9 md:h-11" : "h-11 md:h-14"
                 }`}
               />
-              <span className="hidden lg:inline font-headline font-bold text-primary tracking-tight">
-                Easy Support
-              </span>
+              <div className="flex flex-col justify-center items-start transition-all duration-500 ease-in-out" style={{ marginLeft: "8px" }}>
+                <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[11px] md:text-[13px]' : 'text-[13px] md:text-[16px]'}`} style={{ color: isZoomed ? "#1b3580" : "#000000", fontWeight: 700, letterSpacing: "0px", lineHeight: "1.1" }}>
+                  ايزي سابورت لخدمات الطباعة
+                </span>
+                <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[14px] md:text-[16px]' : 'text-[16px] md:text-[22px]'}`} style={{ color: isZoomed ? "#33a1d9" : "#ffffff", fontWeight: 800, letterSpacing: "0.5px", lineHeight: "1", textTransform: "uppercase", marginTop: "2px" }}>
+                  EASY SUPPORT
+                </span>
+                <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[8px] md:text-[10px]' : 'text-[10px] md:text-[13px]'}`} style={{ color: isZoomed ? "#1b3580" : "#000000", fontWeight: 700, letterSpacing: "1px", lineHeight: "1.2", textTransform: "uppercase", marginTop: "1px" }}>
+                  TYPING SERVICES
+                </span>
+              </div>
             </Link>
           </div>
  
@@ -89,10 +93,10 @@ export default function Header() {
           <div className="flex-1" />
  
           {/* Desktop Nav Links */}
-          <nav className={`hidden md:flex items-center transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) origin-center ${
+          <nav className={`hidden lg:flex items-center transition-all duration-500 ease-in-out origin-center z-10 ${
             isZoomed
               ? "gap-2 bg-transparent p-0"
-              : "gap-4 md:gap-5 bg-transparent p-0"
+              : "gap-3 xl:gap-5 bg-transparent p-0"
           }`}>
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -100,10 +104,10 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`font-semibold rounded-full border transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) ${
+                  className={`font-semibold rounded-full border transition-all duration-500 ease-in-out whitespace-nowrap ${
                     isZoomed
-                      ? "text-sm px-4.5 py-1.5"
-                      : "text-sm md:text-base px-6 py-2.5"
+                      ? "text-sm px-4 py-1.5"
+                      : "text-sm lg:text-base px-4 xl:px-6 py-2.5"
                   } ${
                     isActive
                       ? isZoomed
@@ -126,10 +130,10 @@ export default function Header() {
             {/* Contact Button inside navbar */}
             <Link
               href="/contact"
-              className={`rounded-full font-bold transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) active:scale-95 border ${
+              className={`rounded-full font-bold transition-all duration-500 ease-in-out active:scale-95 border whitespace-nowrap ${
                 isZoomed
                   ? "text-sm px-5 py-1.5"
-                  : "text-sm md:text-base px-6.5 py-2.5"
+                  : "text-sm lg:text-base px-5 xl:px-6.5 py-2.5"
               } ${
                 isHomepage && !isZoomed
                   ? "bg-white text-primary border-white hover:bg-white/90 shadow-[0_4px_12px_rgba(255,255,255,0.15)]"
@@ -142,15 +146,15 @@ export default function Header() {
             </Link>
           </nav>
  
-          {/* Right Spacer (transitioning from flex-none to flex-1) */}
-          <div className={`transition-all duration-700 ${isZoomed ? "flex-1" : "flex-none w-0"}`} />
+          {/* Right Spacer */}
+          <div className={`transition-all duration-500 ease-in-out ${isZoomed ? "flex-1" : "flex-none w-0"}`} />
  
           {/* Hamburger Menu Wrapper (aligned right) */}
-          <div className="absolute right-6 md:right-12 flex items-center transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1) origin-right">
+          <div className="flex items-center transition-all duration-500 ease-in-out origin-right z-10">
             {/* Hamburger Button for Mobile */}
             <button
               onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-              className={`md:hidden flex items-center justify-center p-2 rounded-full transition-colors focus:outline-none ${
+              className={`lg:hidden flex items-center justify-center p-2 rounded-full transition-colors focus:outline-none ${
                 isZoomed
                   ? "text-primary hover:bg-slate-100/50"
                   : isHomepage
@@ -180,40 +184,46 @@ export default function Header() {
  
       {/* Mobile Drawer Content */}
       <div
-        className={`fixed top-[73px] right-0 bottom-0 z-40 w-64 bg-white/80 backdrop-blur-xl border-l border-white/20 p-6 shadow-2xl md:hidden transition-transform duration-300 ${
+        className={`fixed top-[73px] right-0 bottom-0 z-40 w-72 bg-primary backdrop-blur-2xl border-l border-white/10 p-6 shadow-[-10px_0_40px_rgba(0,0,0,0.3)] lg:hidden transition-transform duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) ${
           isDrawerOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <nav className="flex flex-col gap-5 mt-4">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={handleLinkClick}
-                className={`text-body-lg font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 ${
-                  isActive
-                    ? "text-primary bg-slate-100/60 border border-slate-200/20 pl-4"
-                    : "text-on-surface-variant pl-4 hover:text-primary hover:bg-slate-50/50"
-                }`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-          <Link
-            href="/contact"
-            onClick={handleLinkClick}
-            className={`w-full text-center px-6 py-3 rounded-full font-bold transition-all active:scale-95 mt-4 border ${
-              pathname === "/contact"
-                ? "bg-primary text-white border-primary"
-                : "bg-gradient-to-r from-primary to-primary-container text-white border-white/10 shadow-[0_4px_12px_rgba(0,50,129,0.15)]"
-            }`}
-          >
-            Contact
-          </Link>
-        </nav>
+        <div className="flex flex-col h-full">
+          <nav className="flex flex-col gap-3 mt-6 flex-1">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={handleLinkClick}
+                  className={`text-lg font-headline font-semibold px-5 py-3.5 rounded-2xl transition-all duration-500 ease-in-out flex items-center ${
+                    isActive
+                      ? "text-white bg-secondary shadow-lg translate-x-2"
+                      : "text-white/70 hover:text-white hover:bg-white/10 hover:translate-x-2"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </nav>
+          
+          <div className="mt-auto pb-24">
+            <Link
+              href="/contact"
+              onClick={handleLinkClick}
+              className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-2xl font-bold transition-all active:scale-95 shadow-xl ${
+                pathname === "/contact"
+                  ? "bg-secondary text-white"
+                  : "bg-white text-primary hover:bg-slate-50"
+              }`}
+            >
+              <span className="material-symbols-outlined text-xl">support_agent</span>
+              Contact Us
+            </Link>
+          </div>
+        </div>
       </div>
  
       {/* Bottom Action Nav Bar (Mobile Only) */}
