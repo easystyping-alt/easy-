@@ -36,37 +36,34 @@ export default function About() {
   return (
     <div ref={sectionsRef}>
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-12 md:pt-20 md:pb-20 bg-surface-bright hero-pattern">
-        <div className="max-w-container-max mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="flex-1 space-y-6">
-              <span className="inline-block px-4 py-1.5 bg-secondary-fixed text-on-secondary-fixed font-mono text-xs font-semibold rounded-full tracking-wider uppercase">
-                Our Identity
-              </span>
-              <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-primary leading-tight">
-                Gateway to All <br /> Government Transactions
-              </h1>
-              <p className="text-body-lg text-text-muted max-w-xl leading-relaxed">
-                EASY SUPPORT TYPING SERVICE is a leading business
-                setup and PRO services provider in Dubai. Operating
-                with great vision and passion, we are committed to
-                customer satisfaction. Our experienced team is familiar
-                with all government departments, and we serve
-                companies in a wide range of industries. Our team
-                provides services in a timely and efficient manner.
-              </p>
-            </div>
-            <div className="flex-1 relative w-full">
-              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border-4 border-white">
-                <img
-                  className="w-full aspect-[4/3] object-cover"
-                  alt="A high-angle cinematic photograph of the Dubai skyline with the Burj Khalifa"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvOH10I7XTGuSObm1WNRzoXcvs_1lZxsXz-rT_y2QVUeGpHxVbDP5Cef4QhETMfULaCxc50aJalnqAB81B6Lyk9TRSbu40U9d_NutUVP7Xl2pY50aRhf6ZtTZGJOlZhIWFRISA77Ro5qB9v8eTS0TZQy5kWznIUE4lSIpVuI7JRvqLgHzzI0Tx1atQ7dt6epN3fH9jIBJuPiVvQrLA5xDbFytyEYyf7ag4cFNs_SNGmCYqETXgr6l2Y2CM4i1rRE7TghPuW9DYLS05"
-                />
-              </div>
-              <div className="absolute -top-12 -right-12 w-48 h-48 bg-secondary/10 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
-            </div>
+      <section className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-32 bg-black">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            className="w-full h-full object-cover"
+            alt="A high-angle cinematic photograph of the Dubai skyline with the Burj Khalifa"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvOH10I7XTGuSObm1WNRzoXcvs_1lZxsXz-rT_y2QVUeGpHxVbDP5Cef4QhETMfULaCxc50aJalnqAB81B6Lyk9TRSbu40U9d_NutUVP7Xl2pY50aRhf6ZtTZGJOlZhIWFRISA77Ro5qB9v8eTS0TZQy5kWznIUE4lSIpVuI7JRvqLgHzzI0Tx1atQ7dt6epN3fH9jIBJuPiVvQrLA5xDbFytyEYyf7ag4cFNs_SNGmCYqETXgr6l2Y2CM4i1rRE7TghPuW9DYLS05"
+          />
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <div className="relative z-10 max-w-container-max mx-auto px-6 text-center">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <span className="inline-block px-4 py-1.5 bg-secondary text-white font-mono text-xs font-semibold rounded-full tracking-wider uppercase drop-shadow-md">
+              Our Identity
+            </span>
+            <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg">
+              Gateway to All <br /> Government Transactions
+            </h1>
+            <p className="text-body-lg text-white/90 leading-relaxed drop-shadow max-w-2xl mx-auto">
+              EASY SUPPORT TYPING SERVICE is a leading business
+              setup and PRO services provider in Dubai. Operating
+              with great vision and passion, we are committed to
+              customer satisfaction. Our experienced team is familiar
+              with all government departments, and we serve
+              companies in a wide range of industries. Our team
+              provides services in a timely and efficient manner.
+            </p>
           </div>
         </div>
       </section>
@@ -140,7 +137,7 @@ export default function About() {
         <div className="max-w-container-max mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Mission */}
-            <div className="md:col-span-8 bg-primary text-on-primary p-8 md:p-12 rounded-3xl relative overflow-hidden group shadow-xl flex flex-col justify-center">
+            <div className="md:col-span-8 bg-primary text-white p-8 md:p-12 rounded-3xl relative overflow-hidden group shadow-xl flex flex-col justify-center">
               <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -169,7 +166,7 @@ export default function About() {
             </div>
 
             {/* Vision */}
-            <div className="md:col-span-5 bg-secondary text-on-primary p-8 md:p-10 rounded-3xl relative overflow-hidden group shadow-lg flex flex-col justify-center">
+            <div className="md:col-span-5 bg-secondary text-white p-8 md:p-10 rounded-3xl relative overflow-hidden group shadow-lg flex flex-col justify-center">
               <div className="relative z-10 space-y-4">
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -235,7 +232,7 @@ export default function About() {
                     format_quote
                   </span>
                   <p className="relative z-10">
-                    At Easy Support, we believe every successful business begins with the right guidance and dependable support. For over 8 years, our commitment has been to simplify UAE business and government processes with integrity, professionalism, and excellence. Your success is our greatest achievement, and we are honored to be your trusted partner in every step of your journey.
+                    At Easy Support, we believe every successful business begins with the right guidance and dependable support. For over years, our commitment has been to simplify UAE business and government processes with integrity, professionalism, and excellence. Your success is our greatest achievement, and we are honored to be your trusted partner in every step of your journey.
                   </p>
                 </div>
                 <div className="pt-4">
