@@ -45,97 +45,113 @@ export default function Services() {
     {
       title: "Amer Services",
       desc: "Entry permits, visa cancellation, and residency processing for families and individuals.",
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/amer-seeklogo.png",
       href: "/contact?service=amer",
     },
     {
       title: "Tasheel",
       desc: "MOHRE labor contracts, work permits, and employment related government paperwork.",
       image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/tas-heel-dubai-uae-seeklogo.png",
       href: "/contact?service=tasheel",
     },
     {
       title: "Tawjeeh",
       desc: "Labour awareness training, employer-employee guidance, and legal orientation.",
       image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/dubai-government-human-resources-dept-dghr-logo-png_seeklogo-365674.png",
       href: "/contact?service=tawjeeh",
     },
     {
       title: "Tadbeer",
       desc: "Recruitment and placement services for domestic and household workers.",
       image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/government-of-dubai-seeklogo.png",
       href: "/contact?service=tadbeer",
     },
     {
       title: "Emirates ID",
       desc: "Biometric registration, renewal, and replacement of Emirates Identity Cards.",
-      image: "https://images.unsplash.com/photo-1613243555988-441166d4d6fd?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/uaeicp-federal-authority-for-identity-citizenshi-seeklogo.png",
       href: "/contact?service=emiratesid",
     },
     {
       title: "Medical Services",
       desc: "Visa medical fitness tests coordination with DHA and MOH authorities.",
-      image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/dha-medical-education-department-logo.png",
       href: "/contact?service=medical",
     },
     {
       title: "RTA Services",
       desc: "Vehicle registration, driving license renewal, and fine payments.",
-      image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/dubai-roads-transport-authority-seeklogo.png",
       href: "/contact?service=rta",
     },
     {
       title: "Dubai Chamber",
       desc: "Company registration, certificates of origin, and membership renewals.",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/dubai-economy-and-tourism-seeklogo.png",
       href: "/contact?service=chamber",
     },
     {
       title: "Dubai Municipality",
       desc: "Health permits, food safety certifications, and trade license approvals.",
-      image: "https://images.unsplash.com/photo-1577416418012-786090949d03?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/dubai-municipality-seeklogo.png",
       href: "/contact?service=municipality",
     },
     {
       title: "Dubai Customs",
       desc: "Client code registration, import/export permits, and customs clearance.",
-      image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/United Arab Emirates Vector Logo.jpg",
       href: "/contact?service=customs",
     },
     {
       title: "Notary Services",
       desc: "MOA attestation, power of attorney, and legal document verification.",
       image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/429-4297405_high-resolution-low-resolution-dubai-courts-logo.png",
       href: "/contact?service=notary",
     },
     {
       title: "Translation",
       desc: "Legal translation of documents from all languages to Arabic/English.",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/government-of-dubai-seeklogo.png",
       href: "/contact?service=translation",
     },
     {
       title: "Attestation",
       desc: "MOFA, Educational, and Personal document attestation services.",
-      image: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/United Arab Emirates Vector Logo.jpg",
       href: "/contact?service=attestation",
     },
     {
       title: "Trademark & ISO",
       desc: "Brand protection, logo registration, and ISO quality standard audits.",
-      image: "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/department-of-economic-development-logo.png",
       href: "/contact?service=trademark",
     },
     {
       title: "Accounting",
       desc: "VAT registration, auditing, bookkeeping, and financial statement reports.",
       image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/department-of-economic-development-logo.png",
       href: "/contact?service=accounting",
     },
     {
       title: "Travel & Tourism",
       desc: "Tourist visas, air ticketing, hotel booking, and holiday packages.",
-      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=600&auto=format&fit=crop",
+      logo: "/logos/dubai-economy-and-tourism-seeklogo.png",
       href: "/contact?service=travel",
     },
   ];
@@ -191,7 +207,7 @@ export default function Services() {
             <div
               key={index}
               style={{ transitionDelay: `${index * 50}ms` }}
-              className="service-card group opacity-0 translate-y-8 transition-all duration-700 relative overflow-hidden p-6 md:p-8 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.35)] flex flex-col justify-between min-h-[280px] text-white border border-white/10"
+              className="service-card group opacity-0 translate-y-8 transition-all duration-700 relative overflow-hidden p-6 md:p-8 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.45)] flex flex-col justify-between min-h-[300px] text-white border border-white/10"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
@@ -200,12 +216,22 @@ export default function Services() {
                   alt={service.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/45 group-hover:via-black/85 transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/80 to-black/50 group-hover:via-black/85 transition-all duration-500"></div>
               </div>
 
-              {/* Card Content */}
-              <div className="relative z-10">
-                <h3 className="font-headline text-xl font-bold text-white mb-3 group-hover:text-secondary-container transition-colors duration-300">
+              {/* Logo / Badge and Content */}
+              <div className="relative z-10 space-y-4">
+                {service.logo && (
+                  <div className="w-14 h-14 bg-white/95 p-1.5 rounded-xl flex items-center justify-center shadow-md border border-white/20 transition-transform duration-300 group-hover:scale-105">
+                    <img
+                      src={service.logo}
+                      alt={`${service.title} logo`}
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                )}
+                
+                <h3 className="font-headline text-xl font-bold text-white mb-2 group-hover:text-secondary-container transition-colors duration-300">
                   {service.title}
                 </h3>
                 <p className="font-sans text-sm text-white/80 leading-relaxed">
