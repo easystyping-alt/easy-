@@ -87,7 +87,7 @@ export default function Services() {
     {
       title: "RTA Services",
       desc: "Vehicle registration, driving license renewal, and fine payments.",
-      image: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=600&auto=format&fit=crop",
       logo: "/logos/dubai-roads-transport-authority-seeklogo.png",
       href: "/contact?service=rta",
     },
