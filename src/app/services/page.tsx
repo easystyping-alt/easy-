@@ -45,129 +45,97 @@ export default function Services() {
     {
       title: "Amer Services",
       desc: "Entry permits, visa cancellation, and residency processing for families and individuals.",
-      icon: "badge",
-      bgColor: "bg-primary-container",
-      textColor: "text-on-primary-container",
+      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=amer",
     },
     {
       title: "Tasheel",
       desc: "MOHRE labor contracts, work permits, and employment related government paperwork.",
-      icon: "work",
-      bgColor: "bg-secondary-container",
-      textColor: "text-on-secondary-container",
+      image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=tasheel",
     },
     {
       title: "Tawjeeh",
       desc: "Labour awareness training, employer-employee guidance, and legal orientation.",
-      icon: "school",
-      bgColor: "bg-tertiary-fixed",
-      textColor: "text-on-tertiary-fixed",
+      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=tawjeeh",
     },
     {
       title: "Tadbeer",
       desc: "Recruitment and placement services for domestic and household workers.",
-      icon: "home",
-      bgColor: "bg-primary-fixed",
-      textColor: "text-on-primary-fixed",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=tadbeer",
     },
     {
       title: "Emirates ID",
       desc: "Biometric registration, renewal, and replacement of Emirates Identity Cards.",
-      icon: "id_card",
-      bgColor: "bg-surface-container",
-      textColor: "text-primary",
+      image: "https://images.unsplash.com/photo-1613243555988-441166d4d6fd?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=emiratesid",
     },
     {
       title: "Medical Services",
       desc: "Visa medical fitness tests coordination with DHA and MOH authorities.",
-      icon: "medical_services",
-      bgColor: "bg-error-container",
-      textColor: "text-on-error-container",
+      image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=medical",
     },
     {
       title: "RTA Services",
       desc: "Vehicle registration, driving license renewal, and fine payments.",
-      icon: "directions_car",
-      bgColor: "bg-on-secondary-fixed",
-      textColor: "text-secondary-fixed",
+      image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=rta",
     },
     {
       title: "Dubai Chamber",
       desc: "Company registration, certificates of origin, and membership renewals.",
-      icon: "account_balance",
-      bgColor: "bg-secondary-fixed-dim",
-      textColor: "text-on-secondary-fixed",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=chamber",
     },
     {
       title: "Dubai Municipality",
       desc: "Health permits, food safety certifications, and trade license approvals.",
-      icon: "location_city",
-      bgColor: "bg-primary-container",
-      textColor: "text-on-primary-container",
+      image: "https://images.unsplash.com/photo-1577416418012-786090949d03?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=municipality",
     },
     {
       title: "Dubai Customs",
       desc: "Client code registration, import/export permits, and customs clearance.",
-      icon: "inventory",
-      bgColor: "bg-on-tertiary-fixed",
-      textColor: "text-tertiary-fixed",
+      image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=customs",
     },
     {
       title: "Notary Services",
       desc: "MOA attestation, power of attorney, and legal document verification.",
-      icon: "gavel",
-      bgColor: "bg-secondary",
-      textColor: "text-on-secondary",
+      image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=notary",
     },
     {
       title: "Translation",
       desc: "Legal translation of documents from all languages to Arabic/English.",
-      icon: "translate",
-      bgColor: "bg-on-primary-container",
-      textColor: "text-primary-container",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=translation",
     },
     {
       title: "Attestation",
       desc: "MOFA, Educational, and Personal document attestation services.",
-      icon: "verified",
-      bgColor: "bg-surface-container-high",
-      textColor: "text-primary",
+      image: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=attestation",
     },
     {
       title: "Trademark & ISO",
       desc: "Brand protection, logo registration, and ISO quality standard audits.",
-      icon: "copyright",
-      bgColor: "bg-tertiary-container",
-      textColor: "text-on-tertiary-container",
+      image: "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=trademark",
     },
     {
       title: "Accounting",
       desc: "VAT registration, auditing, bookkeeping, and financial statement reports.",
-      icon: "account_balance_wallet",
-      bgColor: "bg-primary-fixed-dim",
-      textColor: "text-on-primary-fixed",
+      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=accounting",
     },
     {
       title: "Travel & Tourism",
       desc: "Tourist visas, air ticketing, hotel booking, and holiday packages.",
-      icon: "flight_takeoff",
-      bgColor: "bg-secondary-fixed",
-      textColor: "text-on-secondary-fixed",
+      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=600&auto=format&fit=crop",
       href: "/contact?service=travel",
     },
   ];
@@ -223,20 +191,31 @@ export default function Services() {
             <div
               key={index}
               style={{ transitionDelay: `${index * 50}ms` }}
-              className="service-card opacity-0 translate-y-8 transition-all duration-700 bg-surface-container-lowest border border-border-light p-6 md:p-8 rounded-xl hover:border-secondary hover:shadow-[0_20px_40px_-15px_rgba(35,74,156,0.1)] flex flex-col justify-between"
+              className="service-card group opacity-0 translate-y-8 transition-all duration-700 relative overflow-hidden p-6 md:p-8 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.35)] flex flex-col justify-between min-h-[280px] text-white border border-white/10"
             >
-              <div>
-                <div className={`w-12 h-12 rounded-lg ${service.bgColor} flex items-center justify-center ${service.textColor} mb-6 transition-transform hover:scale-110`}>
-                  <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 0" }}>
-                    {service.icon}
-                  </span>
-                </div>
-                <h3 className="font-headline text-xl font-bold text-primary mb-3">{service.title}</h3>
-                <p className="font-sans text-sm text-text-muted mb-6 leading-relaxed">{service.desc}</p>
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/45 group-hover:via-black/85 transition-all duration-500"></div>
               </div>
+
+              {/* Card Content */}
+              <div className="relative z-10">
+                <h3 className="font-headline text-xl font-bold text-white mb-3 group-hover:text-secondary-container transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="font-sans text-sm text-white/80 leading-relaxed">
+                  {service.desc}
+                </p>
+              </div>
+
               <Link
                 href={service.href}
-                className="text-secondary font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all mt-auto"
+                className="relative z-10 text-secondary-container font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all mt-auto"
               >
                 Learn more <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
               </Link>
