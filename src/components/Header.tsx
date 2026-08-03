@@ -11,6 +11,10 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
  
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
+
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
