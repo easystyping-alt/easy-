@@ -174,8 +174,7 @@ export default function Services() {
 
   return (
     <div ref={containerRef}>
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-black text-white">
+      <section className="relative min-h-[calc(100vh-85px)] flex items-center overflow-hidden bg-black text-white py-16">
         <div className="absolute inset-0 z-0">
           <img
             className="w-full h-full object-cover opacity-60"
@@ -184,11 +183,8 @@ export default function Services() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-transparent"></div>
         </div>
-        <div className="max-w-container-max mx-auto px-6 relative z-10">
+        <div className="max-w-container-max mx-auto px-6 relative z-10 w-full">
           <div className="max-w-3xl space-y-6">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-white font-mono text-xs font-semibold uppercase tracking-wider">
-              Premium Government Liaison
-            </span>
             <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight">
               Seamless Government <br /> <span className="text-secondary-container font-headline">Solutions in Dubai.</span>
             </h1>

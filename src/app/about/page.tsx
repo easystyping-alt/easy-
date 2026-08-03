@@ -36,7 +36,7 @@ export default function About() {
   return (
     <div ref={sectionsRef}>
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-32 bg-black">
+      <section className="relative overflow-hidden min-h-[calc(100vh-85px)] flex items-center justify-center pt-24 pb-20 bg-black">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -47,11 +47,8 @@ export default function About() {
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
 
-        <div className="relative z-10 max-w-container-max mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-container-max mx-auto px-6 text-center w-full">
           <div className="max-w-3xl mx-auto space-y-6">
-            <span className="inline-block px-4 py-1.5 bg-secondary text-white font-mono text-xs font-semibold rounded-full tracking-wider uppercase drop-shadow-md">
-              Our Identity
-            </span>
             <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg">
               Gateway to All <br /> Government Transactions
             </h1>
