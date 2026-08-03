@@ -52,7 +52,7 @@ export default function Services() {
     {
       title: "Tasheel",
       desc: "MOHRE labor contracts, work permits, and employment related government paperwork.",
-      image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop",
       logo: "/logos/tas-heel-dubai-uae-seeklogo.png",
       href: "/contact?service=tasheel",
     },
@@ -80,7 +80,7 @@ export default function Services() {
     {
       title: "Medical Services",
       desc: "Visa medical fitness tests coordination with DHA and MOH authorities.",
-      image: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=600&auto=format&fit=crop",
       logo: "/logos/dha-medical-education-department-logo.png",
       href: "/contact?service=medical",
     },
