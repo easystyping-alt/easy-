@@ -360,63 +360,67 @@ export default function Home() {
               </div>
               <h2 className="font-headline text-2xl md:text-4xl font-bold text-primary">What Our Clients Say</h2>
             </div>
-            <div className="flex gap-4 justify-center md:justify-end w-full md:w-auto">
-              <button
-                onClick={prevTestimonial}
-                className="w-12 h-12 border border-outline-variant rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all active:scale-90"
-                aria-label="Previous Testimonial"
-              >
-                <span className="material-symbols-outlined">chevron_left</span>
-              </button>
-              <button
-                onClick={nextTestimonial}
-                className="w-12 h-12 border border-outline-variant rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all active:scale-90"
-                aria-label="Next Testimonial"
-              >
-                <span className="material-symbols-outlined">chevron_right</span>
-              </button>
-            </div>
           </div>
 
-          <div className="relative overflow-hidden min-h-[320px]">
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((t, idx) => {
-                const isActive = idx === activeTestimonial;
-                return (
-                  <div
-                    key={idx}
-                    className={`bg-surface p-6 md:p-8 rounded-xl border transition-all duration-500 relative ${
-                      isActive
-                        ? "border-secondary shadow-lg scale-100 opacity-100 z-10 block"
-                        : "border-border-light opacity-60 md:opacity-100 scale-95 hidden md:block"
-                    }`}
-                  >
-                    <span className="material-symbols-outlined text-secondary-container text-5xl md:text-6xl absolute top-4 right-4 opacity-30 select-none">
-                      format_quote
-                    </span>
-                    <div className="flex gap-1 mb-4 md:mb-6 text-[#FFB800]">
-                      {Array.from({ length: t.rating }).map((_, i) => (
-                        <span key={i} className="material-symbols-outlined text-base md:text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>
-                          star
-                        </span>
-                      ))}
-                    </div>
-                    <p className="font-sans text-sm md:text-body-md text-on-surface-variant italic mb-6 md:mb-8 leading-relaxed">
-                      &quot;{t.quote}&quot;
-                    </p>
-                    <div className="flex items-center gap-4 mt-auto">
-                      <div className="w-12 h-12 rounded-full overflow-hidden border border-border-light bg-surface-dim shrink-0">
-                        <img className="w-full h-full object-cover" alt={`${t.name} Portrait`} src={t.avatar} />
+          <div className="relative px-4 md:px-14">
+            {/* Prev Button */}
+            <button
+              onClick={prevTestimonial}
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 border border-outline-variant rounded-full flex items-center justify-center text-primary bg-white hover:bg-primary hover:text-white hover:border-primary transition-all active:scale-90 z-20 shadow-md"
+              aria-label="Previous Testimonial"
+            >
+              <span className="material-symbols-outlined">chevron_left</span>
+            </button>
+
+            <div className="overflow-hidden min-h-[320px] py-4">
+              <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+                {testimonials.map((t, idx) => {
+                  const isActive = idx === activeTestimonial;
+                  return (
+                    <div
+                      key={idx}
+                      className={`bg-surface p-6 md:p-8 rounded-xl border transition-all duration-500 relative ${
+                        isActive
+                          ? "border-secondary shadow-lg scale-100 opacity-100 z-10 block"
+                          : "border-border-light opacity-60 md:opacity-100 scale-95 hidden md:block"
+                      }`}
+                    >
+                      <span className="material-symbols-outlined text-secondary-container text-5xl md:text-6xl absolute top-4 right-4 opacity-30 select-none">
+                        format_quote
+                      </span>
+                      <div className="flex gap-1 mb-4 md:mb-6 text-[#FFB800]">
+                        {Array.from({ length: t.rating }).map((_, i) => (
+                          <span key={i} className="material-symbols-outlined text-base md:text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>
+                            star
+                          </span>
+                        ))}
                       </div>
-                      <div>
-                        <div className="font-bold text-primary text-sm font-headline">{t.name}</div>
-                        <div className="text-[11px] text-text-muted uppercase tracking-wider font-mono font-medium">{t.role}</div>
+                      <p className="font-sans text-sm md:text-body-md text-on-surface-variant italic mb-6 md:mb-8 leading-relaxed">
+                        &quot;{t.quote}&quot;
+                      </p>
+                      <div className="flex items-center gap-4 mt-auto">
+                        <div className="w-12 h-12 rounded-full overflow-hidden border border-border-light bg-surface-dim shrink-0">
+                          <img className="w-full h-full object-cover" alt={`${t.name} Portrait`} src={t.avatar} />
+                        </div>
+                        <div>
+                          <div className="font-bold text-primary text-sm font-headline">{t.name}</div>
+                          <div className="text-[11px] text-text-muted uppercase tracking-wider font-mono font-medium">{t.role}</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
+
+            {/* Next Button */}
+            <button
+              onClick={nextTestimonial}
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 border border-outline-variant rounded-full flex items-center justify-center text-primary bg-white hover:bg-primary hover:text-white hover:border-primary transition-all active:scale-90 z-20 shadow-md"
+              aria-label="Next Testimonial"
+            >
+              <span className="material-symbols-outlined">chevron_right</span>
+            </button>
           </div>
         </div>
       </section>
