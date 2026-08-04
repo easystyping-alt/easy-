@@ -1,10 +1,45 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 export default function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const [activeBranch, setActiveBranch] = useState(0);
+
+  const branches = [
+    {
+      name: "Branch 1 - Al Quoz Ind 2",
+      desc: "Inside Pasons 17 Hypermarket, Al Qouz ind 2, 1st Floor",
+      link: "https://www.google.com/maps/dir//EASY+SUPPORT+TYPING+SERVICES+-+Al+Qouz+Ind.second+-+Dubai/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x3e5f6918524fb3fb:0x23f964e1543e9a00?sa=X&ved=1t:57443&ictx=111",
+      query: "EASY SUPPORT TYPING SERVICES - Al Qouz Ind.second - Dubai"
+    },
+    {
+      name: "Branch 2 - Jebel Ali Ind 1",
+      desc: "Inside Grand Hypermarket, Jebel Ali ind 1, First al khail street",
+      link: "https://www.google.com/maps/dir//Easy+Support+Typing+Services+Branch+2+-+Jebel+Ali+Industrial+Area+-+Dubai/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x3e5f132cb83f9169:0xb219a1a843f804a4?sa=X&ved=1t:57443&ictx=111",
+      query: "Easy Support Typing Services Branch 2 - Jebel Ali Industrial Area - Dubai"
+    },
+    {
+      name: "Branch 3 - Najmat Al Madeena",
+      desc: "Inside Najmat Al Madeena Supermarket",
+      link: "https://www.google.com/search?q=najmat+al+madeena+super+market&oq=najmat+al+madeena&gs_lcrp=EgZjaHJvbWUqBwgBEAAYgAQyBggAEEUYOTIHCAEQABiABDIICAIQABgWGB4yCAgDEAAYFhgeMggIBBAAGBYYHjIICAUQABgWGB4yCAgGEAAYFhgeMggIBxAAGBYYHjIICAgQABgWGB4yCAgJEAAYFhge0gEINTQ2MGowajeoAgCwAgA&sourceid=chrome&source=chrome.ob&ie=UTF-8#sv=CAwSqAMKBmxjbF9wdhJOCgNwdnESR0NnMHZaeTh4TVdJMWVYQjVORFJuSWlRS0htNWhhbTFoZENCaGJDQnRZV1JsWlc1aElITjFjR1Z5SUcxaGNtdGxkQkFDR0FNEoACCgNscWkS-AFDaDV1WVdwdFlYUWdZV3dnYldGa1pXVnVZU0J6ZFhCbGNpQnRZWEpyWlhSSWpxSDYycGVxZ0lBSVdqSVFBQkFCRUFJUUF4QUVHQUVZQWhnREdBUWlIbTVoYW0xaGRDQmhiQ0J0WVdSbFpXNWhJSE4xY0dWeUlHMWhjbXRsZEpJQkMzTjFjR1Z5YldGeWEyVjBtZ0ZFUTJrNVJGRlZiRkpSVlU1MldrVk9iMlJJYkdwU2FteDJWREp6TVU1c1JuTlpNM0JzVWpBMVIxWlVUbXRpTWtaWFZtcGFiR0pXV25oVVJtTjRVMVpLU1ZsNFFVTDZBUVFJQUJBYRISCgN0YnMSC2xyZjohM3NJQUU9EiMKAXESHm5ham1hdCBhbCBtYWRlZW5hIHN1cGVyIG1hcmtldBoSbG9jYWwtcGxhY2Utdmlld2VyGAogmLzj1gQ",
+      query: "Najmat Al Madeena Supermarket Dubai"
+    },
+    {
+      name: "Branch 4 - Al Marabea St",
+      desc: "EASY SUPPORT inside Azhar al madeena Hypermarket",
+      link: "https://www.google.com/maps/dir//Easy+Support+Typing+Services-+Branch+4+-+Al+Marabea'+St+-+Al+Qouz+Ind.fourth+-+Dubai/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x3e5f69e6d831cc75:0xb504e98372590c81?sa=X&ved=1t:57443&ictx=111",
+      query: "Easy Support Typing Services - Branch 4 - Al Marabea' St - Al Qouz Ind.fourth - Dubai"
+    },
+    {
+      name: "Branch 5 - DIP 1",
+      desc: "Inside The parks shopping center, DIP-1",
+      link: "https://www.google.com/maps/dir//EASY+SUPPORT+TYPING+SERVICES+-+DIP+1+-+1+-+Dubai+Investment+Park+-+Dubai/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x3e5f73f67f59f72b:0x3158fd1c11c9e05b?sa=X&ved=1t:57443&ictx=111",
+      query: "EASY SUPPORT TYPING SERVICES - DIP 1 - 1 - Dubai Investment Park - Dubai"
+    }
+  ];
 
   useEffect(() => {
     const observerOptions = {
@@ -279,40 +314,64 @@ export default function Services() {
 
       {/* Branches Network Section */}
       <section id="branches" className="scroll-section opacity-0 translate-y-8 transition-all duration-1000 py-12 md:py-20 px-6 max-w-container-max mx-auto scroll-mt-20">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          <div className="w-full lg:w-1/2 space-y-6">
-            <h2 className="font-headline text-2xl md:text-4xl font-bold text-primary">Our Branch Network</h2>
-            <p className="font-sans text-body-md text-text-muted leading-relaxed">
-              We are strategically located across Dubai to serve you better. Visit any of our branches for premium service.
-            </p>
-            <div className="space-y-4 pt-4">
-              {[
-                { name: "Al Quoz Branch", desc: "Inside Pasons 17 Hypermarket, Al Quoz Ind 2" },
-                { name: "Grand Hyper Branch", desc: "Jabel Ali Ind-2, Grand Hyper Market" },
-                { name: "Dubai Investment Park", desc: "Park Shopping Mall, DIP" },
-              ].map((branch, bidx) => (
-                <div key={bidx} className="flex items-start gap-4 p-4 rounded-lg bg-surface-container-low border border-border-light">
-                  <span className="material-symbols-outlined text-secondary select-none">location_on</span>
-                  <div>
-                    <p className="font-bold text-primary font-headline">{branch.name}</p>
-                    <p className="text-xs text-text-muted mt-0.5">{branch.desc}</p>
+        <div className="flex flex-col lg:flex-row items-stretch gap-12">
+          <div className="w-full lg:w-1/2 space-y-6 flex flex-col justify-between">
+            <div>
+              <h2 className="font-headline text-2xl md:text-4xl font-bold text-primary mb-2">Our Branch Network</h2>
+              <p className="font-sans text-body-md text-text-muted leading-relaxed">
+                We are strategically located across Dubai to serve you better. Click on any of our branches to view its location on the map.
+              </p>
+            </div>
+            <div className="space-y-3 pt-4 flex-grow">
+              {branches.map((branch, bidx) => (
+                <div
+                  key={bidx}
+                  onClick={() => setActiveBranch(bidx)}
+                  className={`flex items-start gap-4 p-4 rounded-xl cursor-pointer transition-all duration-300 border ${
+                    activeBranch === bidx
+                      ? "bg-primary-container/10 border-primary shadow-[0_4px_20px_rgba(0,50,129,0.06)]"
+                      : "bg-surface-container-low border-border-light hover:border-outline-variant hover:bg-surface-container-medium"
+                  }`}
+                >
+                  <span className={`material-symbols-outlined select-none transition-colors duration-300 ${activeBranch === bidx ? 'text-primary' : 'text-secondary'}`}>
+                    location_on
+                  </span>
+                  <div className="flex justify-between items-center w-full">
+                    <div className="pr-4">
+                      <p className={`font-bold font-headline transition-colors duration-300 ${activeBranch === bidx ? 'text-primary' : 'text-primary-container'}`}>
+                        {branch.name}
+                      </p>
+                      <p className="text-xs text-text-muted mt-0.5 leading-relaxed">{branch.desc}</p>
+                    </div>
+                    <a
+                      href={branch.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-xs font-semibold text-secondary hover:text-primary transition-colors py-1 px-2.5 rounded-lg bg-secondary/5 hover:bg-secondary/10 shrink-0"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span className="material-symbols-outlined text-[16px]">directions</span> Directions
+                    </a>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-2xl h-[300px] md:h-[400px]">
-            <div className="w-full h-full bg-surface-container-highest flex items-center justify-center relative">
-              <img
-                className="w-full h-full object-cover"
-                alt="A stylized vector map of Dubai showing branch markers"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuu_GDajykLS0jncDJbdIiMlVVqAIi8-WnmeeUZTyA83kJNkgkBA2G5_6BpYhDXaPbMcuFw8UxGRXqc2E8Em4-zTXURxmrqU36MHNeQCTcfROcmZbc-6TEq96r4SVtwQqjRjYyzwl43_Ls25XoqZquXBAr7dmoSobEjFv4lbjm6PHP1vkB6Pruki8CZwLGHbhETl2jDZtI3YvdY68q_Ocm3SiiEcUjNETSY49BMXiPpI3yNGwbW70QrXmxTxqf1gwovEVwTIpPUF6j"
-              />
-              <div className="absolute inset-0 bg-primary/10 pointer-events-none"></div>
-              <div className="absolute bottom-6 right-6 glass-effect p-4 rounded-lg border border-white/30">
-                <p className="text-sm font-bold text-primary font-headline">5+ Strategic Locations</p>
-                <p className="text-[11px] text-primary/80">Across Dubai &amp; UAE</p>
-              </div>
+          <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-2xl h-[350px] md:h-[450px] border border-border-light relative bg-surface-container-lowest flex flex-col">
+            <div className="bg-primary/5 py-3 px-4 border-b border-border-light flex justify-between items-center shrink-0">
+              <span className="text-xs font-bold text-primary font-headline uppercase tracking-wider">Map Preview</span>
+              <span className="text-xs text-text-muted font-medium">{branches[activeBranch].name}</span>
+            </div>
+            <div className="flex-grow w-full h-full relative">
+              <iframe
+                title={`${branches[activeBranch].name} Map`}
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '300px' }}
+                loading="lazy"
+                allowFullScreen
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(branches[activeBranch].query)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+              ></iframe>
             </div>
           </div>
         </div>
