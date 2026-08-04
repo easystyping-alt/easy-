@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabaseAnon } from "@/lib/supabase";
 
 export default function Gallery() {
   const [filter, setFilter] = useState("all");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [gallery, setGallery] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const galleryItems = [
+  const defaultGalleryItems = [
     {
       id: 1,
       category: "offices",
@@ -45,8 +48,33 @@ export default function Gallery() {
     },
   ];
 
+  useEffect(() => {
+    async function loadGallery() {
+      try {
+        const { data, error } = await supabaseAnon
+          .from("gallery")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          setGallery(data);
+        } else {
+          setGallery(defaultGalleryItems);
+        }
+      } catch (err) {
+        console.warn("Failed to load gallery from Supabase, using defaults.", err);
+        setGallery(defaultGalleryItems);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadGallery();
+  }, []);
+
   const filteredItems =
-    filter === "all" ? galleryItems : galleryItems.filter((item) => item.category === filter);
+    filter === "all" ? gallery : gallery.filter((item) => item.category === filter);
 
   return (
     <div className="max-w-container-max mx-auto px-6 py-12 md:py-20">
@@ -80,8 +108,13 @@ export default function Gallery() {
         ))}
       </div>
 
-      {/* Grid of Images */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {loading ? (
+        <div className="flex flex-col items-center justify-center py-20 gap-3">
+          <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-sm font-semibold text-text-muted">Loading gallery...</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredItems.map((item) => (
           <div
             key={item.id}
@@ -107,6 +140,7 @@ export default function Gallery() {
           </div>
         ))}
       </div>
+      )}
 
       {/* Lightroom Modal Overlay */}
       {selectedImage && (

@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabaseAnon } from "@/lib/supabase";
 
 export default function Careers() {
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [jobs, setJobs] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const jobsList = [
+  const defaultJobs = [
     {
       title: "PRO Liaison Specialist",
       dept: "Government Relations",
@@ -32,6 +35,31 @@ export default function Careers() {
       desc: "Act as our digital concierge. Welcome clients, verify documentation requirements, handle typing queues for Emirates ID and Medical services, and resolve customer queries professionally.",
     },
   ];
+
+  useEffect(() => {
+    async function loadJobs() {
+      try {
+        const { data, error } = await supabaseAnon
+          .from("jobs")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          setJobs(data);
+        } else {
+          setJobs(defaultJobs);
+        }
+      } catch (err) {
+        console.warn("Failed to load jobs from Supabase, using defaults.", err);
+        setJobs(defaultJobs);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadJobs();
+  }, []);
 
   const handleApply = (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,41 +99,49 @@ export default function Careers() {
       {/* Current Job Openings */}
       <section className="space-y-6">
         <h2 className="font-headline text-2xl font-bold text-primary border-b border-border-light pb-4">
-          Current Openings ({jobsList.length})
+          Current Openings ({loading ? "..." : jobs.length})
         </h2>
-        <div className="space-y-4">
-          {jobsList.map((job, index) => (
-            <div
-              key={index}
-              className="bg-surface-container-lowest border border-border-light rounded-xl p-6 md:p-8 hover:border-secondary hover:shadow-md transition-all flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
-            >
-              <div className="space-y-3 max-w-2xl">
-                <span className="inline-block px-3 py-1 bg-secondary-fixed text-primary font-mono text-xs font-semibold rounded-full">
-                  {job.dept}
-                </span>
-                <h3 className="font-headline text-xl font-bold text-primary">{job.title}</h3>
-                <p className="font-sans text-sm text-on-surface-variant leading-relaxed">{job.desc}</p>
-                <div className="flex flex-wrap gap-4 text-xs font-mono text-text-muted pt-2 font-semibold">
-                  <span className="flex items-center gap-1">
-                    <span className="material-symbols-outlined text-[16px]">schedule</span> {job.type}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="material-symbols-outlined text-[16px]">location_on</span> {job.loc}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="material-symbols-outlined text-[16px]">verified</span> {job.exp}
-                  </span>
-                </div>
-              </div>
-              <button
-                onClick={() => setSelectedJob(job.title)}
-                className="bg-primary text-on-primary px-6 py-3 rounded-lg font-bold hover:bg-primary-container transition-all active:scale-95 text-sm shrink-0 w-full md:w-auto text-center"
+        
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-16 gap-3">
+            <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-sm font-semibold text-text-muted">Loading available roles...</p>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {jobs.map((job, index) => (
+              <div
+                key={index}
+                className="bg-surface-container-lowest border border-border-light rounded-xl p-6 md:p-8 hover:border-secondary hover:shadow-md transition-all flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
               >
-                Apply Now
-              </button>
-            </div>
-          ))}
-        </div>
+                <div className="space-y-3 max-w-2xl">
+                  <span className="inline-block px-3 py-1 bg-secondary-fixed text-primary font-mono text-xs font-semibold rounded-full">
+                    {job.dept}
+                  </span>
+                  <h3 className="font-headline text-xl font-bold text-primary">{job.title}</h3>
+                  <p className="font-sans text-sm text-on-surface-variant leading-relaxed">{job.desc}</p>
+                  <div className="flex flex-wrap gap-4 text-xs font-mono text-text-muted pt-2 font-semibold">
+                    <span className="flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[16px]">schedule</span> {job.type}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[16px]">location_on</span> {job.loc}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[16px]">verified</span> {job.exp}
+                    </span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setSelectedJob(job.title)}
+                  className="bg-primary text-on-primary px-6 py-3 rounded-lg font-bold hover:bg-primary-container transition-all active:scale-95 text-sm shrink-0 w-full md:w-auto text-center"
+                >
+                  Apply Now
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Application Form Modal */}
