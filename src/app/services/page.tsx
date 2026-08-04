@@ -357,7 +357,7 @@ export default function Services() {
               ))}
             </div>
           </div>
-          <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-2xl h-[350px] md:h-[450px] border border-border-light relative bg-surface-container-lowest flex flex-col">
+          <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-2xl h-[450px] md:h-[620px] border border-border-light relative bg-surface-container-lowest flex flex-col">
             <div className="bg-primary/5 py-3 px-4 border-b border-border-light flex justify-between items-center shrink-0">
               <span className="text-xs font-bold text-primary font-headline uppercase tracking-wider">Map Preview</span>
               <span className="text-xs text-text-muted font-medium">{branches[activeBranch].name}</span>
