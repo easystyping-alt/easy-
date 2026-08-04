@@ -33,7 +33,6 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Cost Calculator", href: "/calculator" },
     { name: "Gallery", href: "/gallery" },
     { name: "Careers", href: "/careers" },
   ];
@@ -259,14 +258,14 @@ export default function Header() {
         </a>
         <Link
           className={`flex flex-col items-center transition-colors ${
-            pathname === "/calculator" ? "text-primary" : "text-on-surface-variant hover:text-primary"
+            pathname === "/contact" ? "text-primary" : "text-on-surface-variant hover:text-primary"
           }`}
-          href="/calculator"
+          href="/contact"
         >
-          <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: pathname === "/calculator" ? "'FILL' 1" : "'FILL' 0" }}>
-            request_quote
+          <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: pathname === "/contact" ? "'FILL' 1" : "'FILL' 0" }}>
+            mail
           </span>
-          <span className="text-[11px] font-medium mt-0.5">Quote</span>
+          <span className="text-[11px] font-medium mt-0.5">Contact</span>
         </Link>
         <a
           className="text-on-surface-variant flex flex-col items-center hover:text-primary transition-colors"

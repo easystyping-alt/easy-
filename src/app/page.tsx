@@ -331,7 +331,7 @@ export default function Home() {
               <div className="relative z-10 space-y-4">
                 <h3 className="text-xl md:text-2xl font-headline font-semibold">Need a Cost Estimate?</h3>
                 <p className="text-white/80 text-sm max-w-sm">
-                  Use our smart calculator to estimate your business setup or visa costs instantly.
+                  Contact our expert team to get a detailed breakdown of your business setup or visa costs.
                 </p>
                 <Link
                   href="/contact"
@@ -342,7 +342,7 @@ export default function Home() {
               </div>
               <div className="hidden sm:block absolute -right-4 -bottom-6 opacity-20 select-none">
                 <span className="material-symbols-outlined text-[150px] font-thin" style={{ fontVariationSettings: "'FILL' 1" }}>
-                  calculate
+                  support_agent
                 </span>
               </div>
             </div>
