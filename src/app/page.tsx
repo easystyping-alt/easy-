@@ -334,10 +334,10 @@ export default function Home() {
                   Use our smart calculator to estimate your business setup or visa costs instantly.
                 </p>
                 <Link
-                  href="/calculator"
+                  href="/contact"
                   className="inline-block bg-white text-primary font-bold px-6 py-3 rounded-lg hover:bg-secondary-fixed transition-colors active:scale-95"
                 >
-                  Launch Calculator
+                  Contact Us
                 </Link>
               </div>
               <div className="hidden sm:block absolute -right-4 -bottom-6 opacity-20 select-none">

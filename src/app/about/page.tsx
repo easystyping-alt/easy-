@@ -293,10 +293,10 @@ export default function About() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Link
-                  href="/calculator"
+                  href="/contact"
                   className="px-10 py-4 bg-white text-primary font-bold rounded-xl hover:shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2"
                 >
-                  Get a Quote <span className="material-symbols-outlined">arrow_forward</span>
+                  Contact Us <span className="material-symbols-outlined">arrow_forward</span>
                 </Link>
                 <a
                   href="tel:+97140000000"
