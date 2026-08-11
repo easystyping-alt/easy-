@@ -156,13 +156,15 @@ function ContactForm() {
             type="submit"
             disabled={submitted}
             className={`w-full py-4 rounded-lg font-bold transition-all shadow-md active:scale-95 text-sm flex items-center justify-center gap-2 ${
-              submitted ? "bg-secondary text-white" : "bg-primary text-on-primary hover:bg-primary-container"
+              submitted ? "bg-secondary text-white" : "bg-primary text-white hover:bg-primary-container"
             }`}
           >
-            <span className="material-symbols-outlined text-lg">
+            <span className="material-symbols-outlined text-lg text-white">
               {submitted ? "sync" : "send"}
             </span>
-            {submitted ? "Sending inquiry..." : "Send Message"}
+            <span className="text-white">
+              {submitted ? "Sending inquiry..." : "Send Message"}
+            </span>
           </button>
         </form>
       </div>

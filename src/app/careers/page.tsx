@@ -134,7 +134,7 @@ export default function Careers() {
                 </div>
                 <button
                   onClick={() => setSelectedJob(job.title)}
-                  className="bg-primary text-on-primary px-6 py-3 rounded-lg font-bold hover:bg-primary-container transition-all active:scale-95 text-sm shrink-0 w-full md:w-auto text-center"
+                  className="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary-container transition-all active:scale-95 text-sm shrink-0 w-full md:w-auto text-center"
                 >
                   Apply Now
                 </button>
@@ -217,7 +217,7 @@ export default function Careers() {
               <button
                 type="submit"
                 disabled={submitted}
-                className="w-full bg-primary text-on-primary py-4 rounded-lg font-bold hover:bg-primary-container transition-all active:scale-95 text-sm flex items-center justify-center gap-2 mt-4"
+                className="w-full bg-primary text-white py-4 rounded-lg font-bold hover:bg-primary-container transition-all active:scale-95 text-sm flex items-center justify-center gap-2 mt-4"
               >
                 <span className="material-symbols-outlined text-lg">
                   {submitted ? "sync" : "send"}
