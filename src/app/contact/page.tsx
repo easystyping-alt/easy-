@@ -1,8 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
-export default function Contact() {
+const serviceMap: Record<string, string> = {
+  amer: "Amer Residency & Visa Services",
+  tasheel: "Tasheel Labour & MOHRE Services",
+  tawjeeh: "Tawjeeh Guidance & Labour Training",
+  tadbeer: "Tadbeer Domestic Worker Services",
+  emiratesid: "Emirates ID Biometrics & Renewal",
+  medical: "Visa Medical Fitness Coordination",
+  rta: "RTA Vehicle & Driving Licensing",
+  chamber: "Dubai Chamber Registration & COO",
+  municipality: "Dubai Municipality Approvals & Permits",
+  customs: "Dubai Customs Client Code & Clearing",
+  notary: "Notary Public POA & Court Services",
+  translation: "Ministry Certified Legal Translation",
+  attestation: "MOFA & Embassy Document Attestation",
+  trademark: "Trademark Registration & ISO Standards",
+  accounting: "Corporate Tax & VAT Accounting",
+  travel: "Tourist Visa & Travel Packages",
+};
+
+function ContactForm() {
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams.get("service");
+
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -12,6 +35,20 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (serviceParam && serviceMap[serviceParam]) {
+      setFormState((prev) => ({
+        ...prev,
+        subject: `Inquiry regarding ${serviceMap[serviceParam]}`,
+      }));
+    } else if (serviceParam) {
+      setFormState((prev) => ({
+        ...prev,
+        subject: `Inquiry regarding ${serviceParam}`,
+      }));
+    }
+  }, [serviceParam]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -223,5 +260,13 @@ export default function Contact() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Contact() {
+  return (
+    <Suspense fallback={<div className="max-w-container-max mx-auto px-6 py-20 text-center">Loading contact form...</div>}>
+      <ContactForm />
+    </Suspense>
   );
 }
