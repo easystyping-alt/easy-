@@ -243,11 +243,6 @@ export default function Services() {
 
         <div className="max-w-container-max mx-auto px-6 relative z-10 w-full">
           <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-secondary-container tracking-wide uppercase">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              Official UAE Typing &amp; PRO Concierge
-            </div>
-
             <h1 className="font-headline font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.15]">
               Seamless Government <br />
               <span className="text-secondary-container font-headline">Solutions in Dubai.</span>
