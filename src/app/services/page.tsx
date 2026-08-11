@@ -229,7 +229,7 @@ export default function Services() {
   return (
     <div className="w-full bg-surface text-on-surface">
       {/* Hero Section */}
-      <section className="relative min-h-[520px] lg:min-h-[580px] flex items-center overflow-hidden bg-black text-white pt-28 md:pt-36 pb-16 md:pb-24">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-black text-white pt-24 pb-16">
         {/* Background Image with High Contrast Overlay */}
         <div className="absolute inset-0 z-0">
           <img
