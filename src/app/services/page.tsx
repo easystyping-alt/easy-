@@ -265,7 +265,7 @@ export default function Services() {
                 className="bg-white/15 backdrop-blur-md border border-white/30 text-white px-7 py-3.5 rounded-xl font-bold hover:bg-white/25 transition-all active:scale-95 flex items-center gap-2"
               >
                 <span className="material-symbols-outlined text-[20px]">location_on</span>
-                <span>Our 5 Branches</span>
+                <span>Our Branches</span>
               </a>
             </div>
           </div>
