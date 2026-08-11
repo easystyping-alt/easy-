@@ -243,20 +243,6 @@ function ContactForm() {
               </a>
             </div>
           </div>
-
-          {/* Map Grid */}
-          <div className="rounded-2xl overflow-hidden shadow-lg border border-border-light h-72 relative">
-            <img
-              className="w-full h-full object-cover"
-              alt="Google Map Sheikh Zayed Road Dubai Location Map"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuu_GDajykLS0jncDJbdIiMlVVqAIi8-WnmeeUZTyA83kJNkgkBA2G5_6BpYhDXaPbMcuFw8UxGRXqc2E8Em4-zTXURxmrqU36MHNeQCTcfROcmZbc-6TEq96r4SVtwQqjRjYyzwl43_Ls25XoqZquXBAr7dmoSobEjFv4lbjm6PHP1vkB6Pruki8CZwLGHbhETl2jDZtI3YvdY68q_Ocm3SiiEcUjNETSY49BMXiPpI3yNGwbW70QrXmxTxqf1gwovEVwTIpPUF6j"
-            />
-            <div className="absolute inset-0 bg-primary/10 pointer-events-none"></div>
-            <div className="absolute top-4 left-4 glass-card p-3 rounded-lg border border-white/30 text-xs">
-              <p className="font-bold text-primary">Easy Support Typing Services HQ</p>
-              <p className="text-on-surface-variant mt-0.5">Sheikh Zayed Road, Dubai</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
