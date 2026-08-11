@@ -268,26 +268,6 @@ export default function Services() {
                 <span>Our 5 Branches</span>
               </a>
             </div>
-
-            {/* Quick Metrics Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-white/15">
-              <div>
-                <div className="text-2xl font-bold font-headline text-white">15+</div>
-                <div className="text-xs text-white/70">Years of Experience</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold font-headline text-white">16+</div>
-                <div className="text-xs text-white/70">Govt Departments</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold font-headline text-white">5</div>
-                <div className="text-xs text-white/70">Branches in Dubai</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold font-headline text-emerald-400">99.8%</div>
-                <div className="text-xs text-white/70">Approval Success</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
