@@ -10,7 +10,6 @@ export default function Footer() {
         <div className="space-y-6">
           <div className="flex flex-col items-start" style={{ marginLeft: "4px" }}>
             <div className="font-sans" style={{ color: "#ffffff", fontSize: "20px", fontWeight: 600, letterSpacing: "0.2px", lineHeight: "1" }}>EASY SUPPORT TYPING SERVICES</div>
-            <div className="font-sans" style={{ color: "#ffffff", fontSize: "15px", fontWeight: 700, letterSpacing: "0px", lineHeight: "1", marginTop: "4px" }}>ايزي سابورت لخدمات الطباعة</div>
           </div>
           <p className="text-surface-variant opacity-80 font-body text-sm leading-relaxed">
             Your trusted partner for corporate services, PRO solutions, and business establishment in the Emirates since 2009.

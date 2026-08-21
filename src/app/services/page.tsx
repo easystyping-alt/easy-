@@ -570,12 +570,41 @@ export default function Services() {
                     <span className="hidden sm:inline">Directions</span>
                   </a>
                 </div>
+
+                {/* Inline Map Preview for Mobile (only rendered when this branch is active) */}
+                {activeBranch === bidx && (
+                  <div className="lg:hidden mt-4 rounded-xl overflow-hidden shadow border border-border-light bg-white flex flex-col animate-fade-in">
+                    <div className="bg-primary px-4 py-2 text-white flex justify-between items-center shrink-0">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-secondary-container font-bold">Interactive Location</span>
+                      <a
+                        href={branch.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] bg-white text-primary px-2.5 py-1 rounded font-bold hover:bg-white/90 flex items-center gap-1 transition-all"
+                      >
+                        <span>Open Map</span>
+                        <span className="material-symbols-outlined text-[12px]">open_in_new</span>
+                      </a>
+                    </div>
+                    <div className="w-full relative h-[250px]">
+                      <iframe
+                        title={`${branch.name} Map Mobile`}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0, minHeight: "250px" }}
+                        loading="lazy"
+                        allowFullScreen
+                        src={`https://maps.google.com/maps?q=${encodeURIComponent(branch.query)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                      ></iframe>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
-          {/* Map Preview Panel */}
-          <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-xl border border-border-light bg-white flex flex-col min-h-[420px]">
+          {/* Map Preview Panel (Desktop only) */}
+          <div className="hidden lg:flex w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-xl border border-border-light bg-white flex-col min-h-[420px]">
             <div className="bg-primary px-5 py-3.5 text-white flex justify-between items-center shrink-0">
               <div>
                 <span className="text-xs font-mono uppercase tracking-wider text-secondary-container font-bold">Interactive Location</span>

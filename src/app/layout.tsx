@@ -34,7 +34,7 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
-      <body className="bg-surface text-on-surface font-sans min-h-screen flex flex-col pb-16 md:pb-0 overflow-x-hidden">
+      <body className="bg-surface text-on-surface font-sans min-h-screen flex flex-col pb-16 md:pb-0 overflow-x-hidden" suppressHydrationWarning>
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />

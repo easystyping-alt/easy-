@@ -58,14 +58,11 @@ export default function Gallery() {
 
         if (error) throw error;
 
-        if (data && data.length > 0) {
-          setGallery(data);
-        } else {
-          setGallery(defaultGalleryItems);
-        }
+        // Show only dynamic CMS-added pictures
+        setGallery(data || []);
       } catch (err) {
-        console.warn("Failed to load gallery from Supabase, using defaults.", err);
-        setGallery(defaultGalleryItems);
+        console.warn("Failed to load gallery from Supabase.", err);
+        setGallery([]);
       } finally {
         setLoading(false);
       }
@@ -89,10 +86,12 @@ export default function Gallery() {
       {/* Filter Tabs */}
       <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8 pb-4 border-b border-border-light">
         {[
-          { key: "all", label: "All Photos" },
-          { key: "offices", label: "Our Offices" },
-          { key: "team", label: "Consultants & Team" },
-          { key: "service", label: "Client Consultations" },
+          { key: "all", label: "All Branches" },
+          { key: "al_quoz_ind_2", label: "Branch 1 - Al Quoz Ind 2" },
+          { key: "jebel_ali_ind_1", label: "Branch 2 - Jebel Ali Ind 1" },
+          { key: "najmat_al_madeena", label: "Branch 3 - Najmat Al Madeena" },
+          { key: "al_marabea_st", label: "Branch 4 - Al Marabea St" },
+          { key: "dip_1", label: "Branch 5 - DIP 1" },
         ].map((tab) => (
           <button
             key={tab.key}
@@ -114,32 +113,50 @@ export default function Gallery() {
           <p className="text-sm font-semibold text-text-muted">Loading gallery...</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredItems.map((item) => (
-          <div
-            key={item.id}
-            onClick={() => setSelectedImage(item.url)}
-            className="group cursor-pointer bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-secondary border border-border-light transition-all flex flex-col justify-between"
-          >
-            <div className="overflow-hidden aspect-[4/3] bg-surface-dim relative">
-              <img
-                src={item.url}
-                alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span className="material-symbols-outlined text-white text-3xl font-bold">zoom_in</span>
-              </div>
-            </div>
-            <div className="p-5 border-t border-border-light bg-white">
-              <h4 className="font-headline font-semibold text-primary text-sm line-clamp-1">{item.title}</h4>
-              <p className="text-xs text-text-muted capitalize font-mono mt-1 font-semibold">
-                Category: {item.category}
-              </p>
-            </div>
+        filteredItems.length === 0 ? (
+          <div className="text-center py-20 bg-surface-container-low rounded-2xl border border-border-light space-y-3 animate-fade-in">
+            <span className="material-symbols-outlined text-text-muted text-5xl">photo_library</span>
+            <h4 className="font-headline font-semibold text-primary text-base">No pictures in this branch album yet</h4>
+            <p className="text-sm text-text-muted max-w-sm mx-auto leading-relaxed">Images uploaded in the CMS dashboard under this branch location will be displayed here.</p>
           </div>
-        ))}
-      </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredItems.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => setSelectedImage(item.url)}
+                className="group cursor-pointer bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-secondary border border-border-light transition-all flex flex-col justify-between"
+              >
+                <div className="overflow-hidden aspect-[4/3] bg-surface-dim relative">
+                  <img
+                    src={item.url}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="material-symbols-outlined text-white text-3xl font-bold">zoom_in</span>
+                  </div>
+                </div>
+                <div className="p-5 border-t border-border-light bg-white">
+                  <h4 className="font-headline font-semibold text-primary text-sm line-clamp-1">{item.title}</h4>
+                  <p className="text-xs text-text-muted font-mono mt-1 font-semibold">
+                    Branch: {item.category === "al_quoz_ind_2"
+                      ? "Branch 1 - Al Quoz Ind 2"
+                      : item.category === "jebel_ali_ind_1"
+                      ? "Branch 2 - Jebel Ali Ind 1"
+                      : item.category === "najmat_al_madeena"
+                      ? "Branch 3 - Najmat Al Madeena"
+                      : item.category === "al_marabea_st"
+                      ? "Branch 4 - Al Marabea St"
+                      : item.category === "dip_1"
+                      ? "Branch 5 - DIP 1"
+                      : item.category}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )
       )}
 
       {/* Lightroom Modal Overlay */}

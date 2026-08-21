@@ -46,14 +46,10 @@ export default function Careers() {
 
         if (error) throw error;
 
-        if (data && data.length > 0) {
-          setJobs(data);
-        } else {
-          setJobs(defaultJobs);
-        }
+        setJobs(data || []);
       } catch (err) {
-        console.warn("Failed to load jobs from Supabase, using defaults.", err);
-        setJobs(defaultJobs);
+        console.warn("Failed to load jobs from Supabase.", err);
+        setJobs([]);
       } finally {
         setLoading(false);
       }
@@ -108,39 +104,47 @@ export default function Careers() {
             <p className="text-sm font-semibold text-text-muted">Loading available roles...</p>
           </div>
         ) : (
-          <div className="space-y-4">
-            {jobs.map((job, index) => (
-              <div
-                key={index}
-                className="bg-surface-container-lowest border border-border-light rounded-xl p-6 md:p-8 hover:border-secondary hover:shadow-md transition-all flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
-              >
-                <div className="space-y-3 max-w-2xl">
-                  <span className="inline-block px-3 py-1 bg-secondary-fixed text-primary font-mono text-xs font-semibold rounded-full">
-                    {job.dept}
-                  </span>
-                  <h3 className="font-headline text-xl font-bold text-primary">{job.title}</h3>
-                  <p className="font-sans text-sm text-on-surface-variant leading-relaxed">{job.desc}</p>
-                  <div className="flex flex-wrap gap-4 text-xs font-mono text-text-muted pt-2 font-semibold">
-                    <span className="flex items-center gap-1">
-                      <span className="material-symbols-outlined text-[16px]">schedule</span> {job.type}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <span className="material-symbols-outlined text-[16px]">location_on</span> {job.loc}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <span className="material-symbols-outlined text-[16px]">verified</span> {job.exp}
-                    </span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setSelectedJob(job.title)}
-                  className="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary-container transition-all active:scale-95 text-sm shrink-0 w-full md:w-auto text-center"
-                >
-                  Apply Now
-                </button>
+            jobs.length === 0 ? (
+              <div className="text-center py-16 bg-surface-container-low rounded-2xl border border-border-light space-y-3 animate-fade-in">
+                <span className="material-symbols-outlined text-text-muted text-5xl">work</span>
+                <h4 className="font-headline font-semibold text-primary text-base">No open positions at the moment</h4>
+                <p className="text-sm text-text-muted max-w-sm mx-auto leading-relaxed">Check back later or visit our office to submit a general application query.</p>
               </div>
-            ))}
-          </div>
+            ) : (
+              <div className="space-y-4">
+                {jobs.map((job, index) => (
+                  <div
+                    key={index}
+                    className="bg-surface-container-lowest border border-border-light rounded-xl p-6 md:p-8 hover:border-secondary hover:shadow-md transition-all flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+                  >
+                    <div className="space-y-3 max-w-2xl">
+                      <span className="inline-block px-3 py-1 bg-secondary-fixed text-primary font-mono text-xs font-semibold rounded-full">
+                        {job.dept}
+                      </span>
+                      <h3 className="font-headline text-xl font-bold text-primary">{job.title}</h3>
+                      <p className="font-sans text-sm text-on-surface-variant leading-relaxed">{job.desc}</p>
+                      <div className="flex flex-wrap gap-4 text-xs font-mono text-text-muted pt-2 font-semibold">
+                        <span className="flex items-center gap-1">
+                          <span className="material-symbols-outlined text-[16px]">schedule</span> {job.type}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <span className="material-symbols-outlined text-[16px]">location_on</span> {job.loc}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <span className="material-symbols-outlined text-[16px]">verified</span> {job.exp}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => setSelectedJob(job.title)}
+                      className="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary-container transition-all active:scale-95 text-sm shrink-0 w-full md:w-auto text-center"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )
         )}
       </section>
 

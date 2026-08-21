@@ -6,12 +6,34 @@ import { supabaseAnon } from "@/lib/supabase";
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"jobs" | "gallery" | "credentials">("jobs");
+  const [activeTab, setActiveTab] = useState<"homepage" | "jobs" | "gallery" | "credentials">("homepage");
 
   // Login form state
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
+
+  // Homepage content state
+  const [slide1Title, setSlide1Title] = useState("");
+  const [slide1Desc, setSlide1Desc] = useState("");
+  const [slide2Title, setSlide2Title] = useState("");
+  const [slide2Desc, setSlide2Desc] = useState("");
+  const [aboutTitle, setAboutTitle] = useState("");
+  const [aboutDesc, setAboutDesc] = useState("");
+  const [homepageSuccess, setHomepageSuccess] = useState("");
+  const [homepageError, setHomepageError] = useState("");
+  const [savingHomepage, setSavingHomepage] = useState(false);
+
+  // Homepage images state
+  const [slide1Image, setSlide1Image] = useState("");
+  const [slide2Image, setSlide2Image] = useState("");
+  const [aboutImage, setAboutImage] = useState("");
+  const [whyChooseImage, setWhyChooseImage] = useState("");
+
+  const [uploadingSlide1, setUploadingSlide1] = useState(false);
+  const [uploadingSlide2, setUploadingSlide2] = useState(false);
+  const [uploadingAbout, setUploadingAbout] = useState(false);
+  const [uploadingWhyChoose, setUploadingWhyChoose] = useState(false);
 
   // Jobs state & forms
   const [jobs, setJobs] = useState<any[]>([]);
@@ -27,7 +49,7 @@ export default function AdminPage() {
   // Gallery state & forms
   const [gallery, setGallery] = useState<any[]>([]);
   const [photoTitle, setPhotoTitle] = useState("");
-  const [photoCategory, setPhotoCategory] = useState("offices");
+  const [photoCategory, setPhotoCategory] = useState("al_quoz_ind_2");
   const [photoUrl, setPhotoUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploadingFile, setUploadingFile] = useState(false);
@@ -42,6 +64,7 @@ export default function AdminPage() {
     if (isAuthenticated) {
       fetchJobs();
       fetchGallery();
+      fetchHomepageContent();
     }
   }, [isAuthenticated]);
 
@@ -89,6 +112,132 @@ export default function AdminPage() {
     }
   };
 
+  // Fetch Homepage Content
+  const fetchHomepageContent = async () => {
+    try {
+      const { data, error } = await supabaseAnon.from("homepage_content").select("*");
+      if (error) throw error;
+      
+      if (data) {
+        data.forEach((item: any) => {
+          if (item.key === "hero_slide1_title") setSlide1Title(item.value);
+          if (item.key === "hero_slide1_desc") setSlide1Desc(item.value);
+          if (item.key === "hero_slide2_title") setSlide2Title(item.value);
+          if (item.key === "hero_slide2_desc") setSlide2Desc(item.value);
+          if (item.key === "about_title") setAboutTitle(item.value);
+          if (item.key === "about_desc") setAboutDesc(item.value);
+          if (item.key === "hero_slide1_image") setSlide1Image(item.value);
+          if (item.key === "hero_slide2_image") setSlide2Image(item.value);
+          if (item.key === "about_image") setAboutImage(item.value);
+          if (item.key === "why_choose_image") setWhyChooseImage(item.value);
+        });
+      }
+    } catch (err: any) {
+      console.warn("Error fetching homepage content:", err.message);
+    }
+  };
+
+  // Generic uploader helper for homepage images
+  const uploadHomepageImage = async (file: File) => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        return data.url;
+      } else {
+        const data = await res.json();
+        throw new Error(data.error || "Upload failed");
+      }
+    } catch (err: any) {
+      alert(err.message || "Upload failed");
+      return null;
+    }
+  };
+
+  const handleSlide1ImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setUploadingSlide1(true);
+      const url = await uploadHomepageImage(e.target.files[0]);
+      if (url) setSlide1Image(url);
+      setUploadingSlide1(false);
+    }
+  };
+
+  const handleSlide2ImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setUploadingSlide2(true);
+      const url = await uploadHomepageImage(e.target.files[0]);
+      if (url) setSlide2Image(url);
+      setUploadingSlide2(false);
+    }
+  };
+
+  const handleAboutImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setUploadingAbout(true);
+      const url = await uploadHomepageImage(e.target.files[0]);
+      if (url) setAboutImage(url);
+      setUploadingAbout(false);
+    }
+  };
+
+  const handleWhyChooseImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setUploadingWhyChoose(true);
+      const url = await uploadHomepageImage(e.target.files[0]);
+      if (url) setWhyChooseImage(url);
+      setUploadingWhyChoose(false);
+    }
+  };
+
+  // Save Homepage Content
+  const handleSaveHomepage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setHomepageSuccess("");
+    setHomepageError("");
+    setSavingHomepage(true);
+
+    const updates = [
+      { key: "hero_slide1_title", value: slide1Title },
+      { key: "hero_slide1_desc", value: slide1Desc },
+      { key: "hero_slide2_title", value: slide2Title },
+      { key: "hero_slide2_desc", value: slide2Desc },
+      { key: "about_title", value: aboutTitle },
+      { key: "about_desc", value: aboutDesc },
+      { key: "hero_slide1_image", value: slide1Image },
+      { key: "hero_slide2_image", value: slide2Image },
+      { key: "about_image", value: aboutImage },
+      { key: "why_choose_image", value: whyChooseImage },
+    ];
+
+    try {
+      const res = await fetch("/api/admin/homepage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updates),
+      });
+
+      if (res.ok) {
+        setHomepageSuccess("Homepage content updated successfully!");
+        fetchHomepageContent();
+      } else {
+        const err = await res.json();
+        setHomepageError(err.error || "Failed to update homepage content");
+      }
+    } catch (err: any) {
+      setHomepageError(err.message || "An unexpected error occurred");
+    } finally {
+      setSavingHomepage(false);
+    }
+  };
+
   // Fetch Jobs
   const fetchJobs = async () => {
     try {
@@ -96,7 +245,7 @@ export default function AdminPage() {
       if (error) throw error;
       setJobs(data || []);
     } catch (err: any) {
-      console.error("Error fetching jobs from Supabase:", err.message);
+      console.warn("Error fetching jobs from Supabase:", err.message);
     }
   };
 
@@ -158,7 +307,7 @@ export default function AdminPage() {
       if (error) throw error;
       setGallery(data || []);
     } catch (err: any) {
-      console.error("Error fetching gallery from Supabase:", err.message);
+      console.warn("Error fetching gallery from Supabase:", err.message);
     }
   };
 
@@ -342,6 +491,17 @@ export default function AdminPage() {
 
           <nav className="flex flex-col gap-2">
             <button
+              onClick={() => setActiveTab("homepage")}
+              className={`flex items-center gap-3 w-full py-3 px-4 rounded-xl text-sm font-bold text-left transition-all ${
+                activeTab === "homepage"
+                  ? "bg-secondary text-white shadow-lg translate-x-1"
+                  : "text-white/80 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              <span className="material-symbols-outlined text-lg">home</span>
+              Manage Homepage
+            </button>
+            <button
               onClick={() => setActiveTab("jobs")}
               className={`flex items-center gap-3 w-full py-3 px-4 rounded-xl text-sm font-bold text-left transition-all ${
                 activeTab === "jobs"
@@ -390,6 +550,255 @@ export default function AdminPage() {
 
       {/* Main Content Area */}
       <main className="flex-grow p-6 md:p-10 max-w-6xl mx-auto w-full">
+        {/* Warning Banner if Supabase is not configured */}
+        {!process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL.includes("placeholder-project-id") ? (
+          <div className="mb-8 p-6 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 flex flex-col md:flex-row items-start gap-4 shadow-sm animate-fade-in">
+            <span className="material-symbols-outlined text-amber-600 text-3xl font-bold select-none shrink-0">warning</span>
+            <div className="space-y-1">
+              <h4 className="font-bold font-headline text-base">Supabase is not configured yet!</h4>
+              <p className="text-sm text-amber-800 leading-relaxed">
+                The CMS is currently running with placeholder credentials. Live database updates, file uploads, and data fetching will fail.
+              </p>
+              <p className="text-xs text-amber-700 font-semibold pt-1">
+                To fix this, create a <code className="bg-amber-100/80 px-1.5 py-0.5 rounded font-mono font-bold text-[11px] text-amber-900 border border-amber-200">.env.local</code> file in the root folder and add your Supabase credentials (see the "Supabase Config" tab).
+              </p>
+            </div>
+          </div>
+        ) : null}
+
+        {/* HOMEPAGE CONTENT TAB */}
+        {activeTab === "homepage" && (
+          <div className="space-y-8 animate-fade-in">
+            <div>
+              <h1 className="font-headline font-bold text-2xl md:text-3xl text-primary">Manage Homepage Content</h1>
+              <p className="text-sm text-text-muted mt-1">Update the headings and descriptions shown on your main landing page.</p>
+            </div>
+
+            <form onSubmit={handleSaveHomepage} className="space-y-6">
+              {homepageSuccess && (
+                <div className="p-4 rounded-xl bg-green-50 text-green-700 text-sm font-semibold border border-green-200">
+                  {homepageSuccess}
+                </div>
+              )}
+              {homepageError && (
+                <div className="p-4 rounded-xl bg-error-container text-error text-sm font-semibold border border-error/25">
+                  {homepageError}
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Hero Slide 1 Card */}
+                <div className="bg-white border border-border-light rounded-2xl p-6 shadow-sm space-y-4">
+                  <h3 className="font-headline font-bold text-lg text-primary border-b border-border-light pb-2 flex items-center gap-2">
+                    <span className="material-symbols-outlined text-secondary">slideshow</span>
+                    Hero Slide 1 (Main Banner)
+                  </h3>
+                  
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-primary font-headline">Slide 1 Title</label>
+                    <input
+                      type="text"
+                      required
+                      value={slide1Title}
+                      onChange={(e) => setSlide1Title(e.target.value)}
+                      placeholder="Slide 1 Title"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-primary focus:outline-none text-sm transition-all"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-primary font-headline">Slide 1 Description</label>
+                    <textarea
+                      required
+                      rows={3}
+                      value={slide1Desc}
+                      onChange={(e) => setSlide1Desc(e.target.value)}
+                      placeholder="Slide 1 Description text"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-primary focus:outline-none text-sm transition-all resize-none"
+                    />
+                  </div>
+                  <div className="space-y-1.5 pt-2">
+                    <label className="text-xs font-bold text-primary font-headline flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[16px]">image</span>
+                      Background Image
+                    </label>
+                    <div className="flex items-center gap-4">
+                      {slide1Image && (
+                        <div className="w-16 h-12 rounded-lg overflow-hidden border border-border-light bg-slate-100 shrink-0">
+                          <img src={slide1Image} alt="Slide 1 Preview" className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleSlide1ImageUpload}
+                        className="text-xs text-text-muted file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 file:cursor-pointer"
+                      />
+                    </div>
+                    {uploadingSlide1 && <p className="text-[10px] text-primary animate-pulse">Uploading background image...</p>}
+                  </div>
+                </div>
+
+                {/* Hero Slide 2 Card */}
+                <div className="bg-white border border-border-light rounded-2xl p-6 shadow-sm space-y-4">
+                  <h3 className="font-headline font-bold text-lg text-primary border-b border-border-light pb-2 flex items-center gap-2">
+                    <span className="material-symbols-outlined text-secondary">slideshow</span>
+                    Hero Slide 2
+                  </h3>
+                  
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-primary font-headline">Slide 2 Title</label>
+                    <input
+                      type="text"
+                      required
+                      value={slide2Title}
+                      onChange={(e) => setSlide2Title(e.target.value)}
+                      placeholder="Slide 2 Title"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-primary focus:outline-none text-sm transition-all"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-primary font-headline">Slide 2 Description</label>
+                    <textarea
+                      required
+                      rows={3}
+                      value={slide2Desc}
+                      onChange={(e) => setSlide2Desc(e.target.value)}
+                      placeholder="Slide 2 Description text"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-primary focus:outline-none text-sm transition-all resize-none"
+                    />
+                  </div>
+                  <div className="space-y-1.5 pt-2">
+                    <label className="text-xs font-bold text-primary font-headline flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[16px]">image</span>
+                      Background Image
+                    </label>
+                    <div className="flex items-center gap-4">
+                      {slide2Image && (
+                        <div className="w-16 h-12 rounded-lg overflow-hidden border border-border-light bg-slate-100 shrink-0">
+                          <img src={slide2Image} alt="Slide 2 Preview" className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleSlide2ImageUpload}
+                        className="text-xs text-text-muted file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 file:cursor-pointer"
+                      />
+                    </div>
+                    {uploadingSlide2 && <p className="text-[10px] text-primary animate-pulse">Uploading background image...</p>}
+                  </div>
+                </div>
+              </div>
+
+              {/* About Preview Card */}
+              <div className="bg-white border border-border-light rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 className="font-headline font-bold text-lg text-primary border-b border-border-light pb-2 flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary">info</span>
+                  About Us Section Preview
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-1 space-y-1.5">
+                    <label className="text-xs font-bold text-primary font-headline">Section Heading</label>
+                    <textarea
+                      required
+                      rows={4}
+                      value={aboutTitle}
+                      onChange={(e) => setAboutTitle(e.target.value)}
+                      placeholder="About Heading Title"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-primary focus:outline-none text-sm transition-all resize-none"
+                    />
+                  </div>
+                  <div className="md:col-span-1 space-y-1.5">
+                    <label className="text-xs font-bold text-primary font-headline">Section Body Paragraph</label>
+                    <textarea
+                      required
+                      rows={6}
+                      value={aboutDesc}
+                      onChange={(e) => setAboutDesc(e.target.value)}
+                      placeholder="About Body Description text"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-primary focus:outline-none text-sm transition-all resize-none"
+                    />
+                  </div>
+                  <div className="md:col-span-1 space-y-1.5">
+                    <label className="text-xs font-bold text-primary font-headline flex items-center gap-1">
+                      <span className="material-symbols-outlined text-[16px]">image</span>
+                      Banner Image
+                    </label>
+                    <div className="flex flex-col gap-3">
+                      {aboutImage && (
+                        <div className="w-full h-24 rounded-lg overflow-hidden border border-border-light bg-slate-100">
+                          <img src={aboutImage} alt="About Preview" className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleAboutImageUpload}
+                        className="text-xs text-text-muted file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 file:cursor-pointer"
+                      />
+                    </div>
+                    {uploadingAbout && <p className="text-[10px] text-primary animate-pulse">Uploading banner image...</p>}
+                  </div>
+                </div>
+              </div>
+
+              {/* Why Choose Us Card */}
+              <div className="bg-white border border-border-light rounded-2xl p-6 shadow-sm space-y-4">
+                <h3 className="font-headline font-bold text-lg text-primary border-b border-border-light pb-2 flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary">image</span>
+                  Why Choose Us Section Image
+                </h3>
+                
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-primary font-headline flex items-center gap-1">
+                    Handshake / Collaborative Image
+                  </label>
+                  <div className="flex items-center gap-6">
+                    {whyChooseImage && (
+                      <div className="w-32 h-20 rounded-lg overflow-hidden border border-border-light bg-slate-100 shrink-0">
+                        <img src={whyChooseImage} alt="Why Choose Us Preview" className="w-full h-full object-cover" />
+                      </div>
+                    )}
+                    <div className="space-y-2">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleWhyChooseImageUpload}
+                        className="text-xs text-text-muted file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 file:cursor-pointer"
+                      />
+                      <p className="text-[10px] text-text-muted">
+                        This image appears inside the large bento card on the homepage under the "Why Choose Us" grid.
+                      </p>
+                    </div>
+                  </div>
+                  {uploadingWhyChoose && <p className="text-[10px] text-primary animate-pulse">Uploading handshake image...</p>}
+                </div>
+              </div>
+
+              <div className="flex justify-end pt-2">
+                <button
+                  type="submit"
+                  disabled={savingHomepage}
+                  className="bg-primary hover:bg-primary-container text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-md active:scale-95 text-sm flex items-center gap-2 disabled:opacity-75"
+                >
+                  {savingHomepage ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Saving Changes...
+                    </>
+                  ) : (
+                    <>
+                      <span className="material-symbols-outlined text-base">save</span>
+                      Save Changes
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+
         {/* JOBS TAB */}
         {activeTab === "jobs" && (
           <div className="space-y-8">
@@ -562,9 +971,11 @@ export default function AdminPage() {
                       onChange={(e) => setPhotoCategory(e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-primary focus:outline-none text-sm bg-white"
                     >
-                      <option value="offices">Our Offices</option>
-                      <option value="team">Consultants &amp; Team</option>
-                      <option value="service">Client Consultations</option>
+                      <option value="al_quoz_ind_2">Branch 1 - Al Quoz Ind 2</option>
+                      <option value="jebel_ali_ind_1">Branch 2 - Jebel Ali Ind 1</option>
+                      <option value="najmat_al_madeena">Branch 3 - Najmat Al Madeena</option>
+                      <option value="al_marabea_st">Branch 4 - Al Marabea St</option>
+                      <option value="dip_1">Branch 5 - DIP 1</option>
                     </select>
                   </div>
 
@@ -640,7 +1051,19 @@ export default function AdminPage() {
                         <div className="p-3 flex justify-between items-center bg-white border-t border-border-light shrink-0">
                           <div className="truncate pr-2">
                             <p className="font-bold text-xs text-primary truncate font-headline">{photo.title}</p>
-                            <span className="text-[9px] uppercase tracking-wider text-text-muted font-bold">{photo.category}</span>
+                            <span className="text-[9px] uppercase tracking-wider text-text-muted font-bold">
+                              {photo.category === "al_quoz_ind_2"
+                                ? "Branch 1 - Al Quoz Ind 2"
+                                : photo.category === "jebel_ali_ind_1"
+                                ? "Branch 2 - Jebel Ali Ind 1"
+                                : photo.category === "najmat_al_madeena"
+                                ? "Branch 3 - Najmat Al Madeena"
+                                : photo.category === "al_marabea_st"
+                                ? "Branch 4 - Al Marabea St"
+                                : photo.category === "dip_1"
+                                ? "Branch 5 - DIP 1"
+                                : photo.category}
+                            </span>
                           </div>
                           <button
                             onClick={() => handleDeletePhoto(photo.id)}

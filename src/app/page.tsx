@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { supabaseAnon } from "@/lib/supabase";
 
 const partnerLogos = [
   { src: "/logos/government-of-dubai-seeklogo.png", alt: "Government of Dubai" },
@@ -21,6 +22,20 @@ const partnerLogos = [
 ];
 
 export default function Home() {
+  // Dynamic homepage content from Supabase
+  const [content, setContent] = useState<Record<string, string>>({
+    hero_slide1_title: "We Build the Base,\nYou Build the Brand",
+    hero_slide1_desc: "Unlock your business potential in the UAE with expert guidance and seamless government transactions tailored for modern entrepreneurs.",
+    hero_slide2_title: "Your Trusted UAE PRO &\nBusiness Setup Partner",
+    hero_slide2_desc: "Navigating complex government processes with ease. From visa processing to legal translations, we are your digital concierge.",
+    about_title: "Your Premium Gateway to All Government Transactions",
+    about_desc: "Easy Support Typing Service is a leading business setup and PRO services provider in Dubai. Operating with great vision and passion, we are committed to customer satisfaction. Our experienced team is familiar with all government departments, ensuring your services are delivered in a timely and efficient manner.",
+    hero_slide1_image: "/images/fmvmm.png",
+    hero_slide2_image: "/images/screen.png",
+    about_image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBKrivT_tPAxBpT0ZYtQfyHBOELT1XhrPcOUPZaSRNkXR9EeQmOokOgzPpY_B-SK2Wc3I5Y0ALuyQiipCzc4y6troEEp4kCC_swudn3Oec8xIt3x-dFl-7ALFXd7OCRwqP1W4J8lgB6m2AniFpROHDVNuuhCAbcd2c1Q7BEHkPefdagWKFkVSqSuDkYO9UR3P8x8iMmpH8AgqsCD78Bilb0P6QJFJAGyd9PpVqmYkwVhVnMc4Rook4zScykPXCgcTbhACmPqQCztNIL",
+    why_choose_image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA4AURzrn-q3Ht-mFbYDeyVMJEpoczJZTY7nOLIIEQo7mnArLuV71td4NpA_qWJD5j9iWEBDRAqr1ztLE8Wepn-WCUhlQC4svlBvGSAMBDndQUeOqz_Ymexq4PLH7TQKISIjQZNCCS_O7ePYtYA5XV69xVy2z8b5-ZnKNfqu4tFtC-nHrghojEc7xVmgKW4A0AqDSPCCyAMkZfhCKp_8m0LPC-rTU2HtbeL2TsTC9ek6lkuFa2KyaBMSKiwbrx6guUsAV9IOzSPTvsj",
+  });
+
   // Hero Slider State
   const [currentSlide, setCurrentSlide] = useState(1);
   const totalSlides = 2;
@@ -30,6 +45,29 @@ export default function Home() {
       setCurrentSlide((prev) => (prev === totalSlides ? 1 : prev + 1));
     }, 6000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    async function fetchContent() {
+      try {
+        const { data, error } = await supabaseAnon.from("homepage_content").select("key, value");
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          const contentMap: Record<string, string> = {};
+          data.forEach((item: { key: string; value: string }) => {
+            contentMap[item.key] = typeof item.value === "string" ? item.value.replace(/\\n/g, "\n").replace(/\/n/g, "\n") : item.value;
+          });
+          setContent((prev) => ({
+            ...prev,
+            ...contentMap,
+          }));
+        }
+      } catch (err) {
+        console.warn("Failed to load custom homepage content from Supabase, using static defaults.", err);
+      }
+    }
+    fetchContent();
   }, []);
 
   useEffect(() => {
@@ -127,16 +165,16 @@ export default function Home() {
               <img
                 alt="Dubai skyline view"
                 className="w-full h-full object-cover transition-transform duration-1000 scale-105"
-                src="/images/fmvmm.png"
+                src={content.hero_slide1_image || "/images/fmvmm.png"}
               />
               <div className="absolute inset-0 bg-black/60"></div>
             </div>
             <div className="relative z-10 max-w-4xl mx-auto space-y-6">
-              <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg">
-                We Build the Base,<br />You Build the Brand
+              <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg whitespace-pre-line">
+                {content.hero_slide1_title}
               </h1>
-              <p className="font-sans text-body-lg text-white/90 max-w-2xl mx-auto drop-shadow">
-                Unlock your business potential in the UAE with expert guidance and seamless government transactions tailored for modern entrepreneurs.
+              <p className="font-sans text-body-lg text-white/90 max-w-2xl mx-auto drop-shadow whitespace-pre-line">
+                {content.hero_slide1_desc}
               </p>
               <div className="flex justify-center gap-4 pt-6">
                 <Link
@@ -165,16 +203,16 @@ export default function Home() {
               <img
                 alt="Business meeting in Dubai"
                 className="w-full h-full object-cover transition-transform duration-1000 scale-105"
-                src="/images/screen.png"
+                src={content.hero_slide2_image || "/images/screen.png"}
               />
               <div className="absolute inset-0 bg-black/60"></div>
             </div>
             <div className="relative z-10 max-w-4xl mx-auto space-y-6">
-              <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg">
-                Your Trusted UAE PRO &amp;<br />Business Setup Partner
+              <h1 className="font-headline font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg whitespace-pre-line">
+                {content.hero_slide2_title}
               </h1>
-              <p className="font-sans text-body-lg text-white/90 max-w-2xl mx-auto drop-shadow">
-                Navigating complex government processes with ease. From visa processing to legal translations, we are your digital concierge.
+              <p className="font-sans text-body-lg text-white/90 max-w-2xl mx-auto drop-shadow whitespace-pre-line">
+                {content.hero_slide2_desc}
               </p>
               <div className="flex justify-center gap-4 pt-6">
                 <Link
@@ -237,7 +275,7 @@ export default function Home() {
               <img
                 className="w-full h-[500px] object-cover"
                 alt="A clean corporate brochure for Easy Support Typing Services on a business desk"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKrivT_tPAxBpT0ZYtQfyHBOELT1XhrPcOUPZaSRNkXR9EeQmOokOgzPpY_B-SK2Wc3I5Y0ALuyQiipCzc4y6troEEp4kCC_swudn3Oec8xIt3x-dFl-7ALFXd7OCRwqP1W4J8lgB6m2AniFpROHDVNuuhCAbcd2c1Q7BEHkPefdagWKFkVSqSuDkYO9UR3P8x8iMmpH8AgqsCD78Bilb0P6QJFJAGyd9PpVqmYkwVhVnMc4Rook4zScykPXCgcTbhACmPqQCztNIL"
+                src={content.about_image || "https://lh3.googleusercontent.com/aida-public/AB6AXuBKrivT_tPAxBpT0ZYtQfyHBOELT1XhrPcOUPZaSRNkXR9EeQmOokOgzPpY_B-SK2Wc3I5Y0ALuyQiipCzc4y6troEEp4kCC_swudn3Oec8xIt3x-dFl-7ALFXd7OCRwqP1W4J8lgB6m2AniFpROHDVNuuhCAbcd2c1Q7BEHkPefdagWKFkVSqSuDkYO9UR3P8x8iMmpH8AgqsCD78Bilb0P6QJFJAGyd9PpVqmYkwVhVnMc4Rook4zScykPXCgcTbhACmPqQCztNIL"}
               />
             </div>
             <div className="absolute -bottom-6 -right-6 glass-card p-6 rounded-lg shadow-lg z-20 hidden md:block border border-primary/10">
@@ -249,11 +287,11 @@ export default function Home() {
             <div className="inline-flex items-center gap-2 text-secondary font-mono text-xs tracking-widest uppercase">
               <span className="w-8 h-[2px] bg-secondary"></span> About Us
             </div>
-            <h2 className="font-headline text-2xl md:text-4xl font-bold text-primary leading-snug">
-              Your Premium Gateway to All Government Transactions
+            <h2 className="font-headline text-2xl md:text-4xl font-bold text-primary leading-snug whitespace-pre-line">
+              {content.about_title}
             </h2>
-            <p className="font-sans text-body-md text-on-surface-variant leading-relaxed">
-              Easy Support Typing Service is a leading business setup and PRO services provider in Dubai. Operating with great vision and passion, we are committed to customer satisfaction. Our experienced team is familiar with all government departments, ensuring your services are delivered in a timely and efficient manner.
+            <p className="font-sans text-body-md text-on-surface-variant leading-relaxed whitespace-pre-line">
+              {content.about_desc}
             </p>
             <div className="grid grid-cols-2 gap-6 pt-4">
               <div className="space-y-2">
@@ -300,7 +338,7 @@ export default function Home() {
               <img
                 className="mt-8 rounded-lg h-44 object-cover"
                 alt="A corporate handshake between two business partners"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4AURzrn-q3Ht-mFbYDeyVMJEpoczJZTY7nOLIIEQo7mnArLuV71td4NpA_qWJD5j9iWEBDRAqr1ztLE8Wepn-WCUhlQC4svlBvGSAMBDndQUeOqz_Ymexq4PLH7TQKISIjQZNCCS_O7ePYtYA5XV69xVy2z8b5-ZnKNfqu4tFtC-nHrghojEc7xVmgKW4A0AqDSPCCyAMkZfhCKp_8m0LPC-rTU2HtbeL2TsTC9ek6lkuFa2KyaBMSKiwbrx6guUsAV9IOzSPTvsj"
+                src={content.why_choose_image || "https://lh3.googleusercontent.com/aida-public/AB6AXuA4AURzrn-q3Ht-mFbYDeyVMJEpoczJZTY7nOLIIEQo7mnArLuV71td4NpA_qWJD5j9iWEBDRAqr1ztLE8Wepn-WCUhlQC4svlBvGSAMBDndQUeOqz_Ymexq4PLH7TQKISIjQZNCCS_O7ePYtYA5XV69xVy2z8b5-ZnKNfqu4tFtC-nHrghojEc7xVmgKW4A0AqDSPCCyAMkZfhCKp_8m0LPC-rTU2HtbeL2TsTC9ek6lkuFa2KyaBMSKiwbrx6guUsAV9IOzSPTvsj"}
               />
             </div>
  

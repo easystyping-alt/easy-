@@ -81,10 +81,7 @@ export default function Header() {
               <div className="flex flex-col justify-center items-start transition-all duration-500 ease-in-out" style={{ marginLeft: "8px" }}>
                 {isHomepage ? (
                   <>
-                    <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[11px] md:text-[13px]' : 'text-[13px] md:text-[16px]'}`} style={{ color: isZoomed ? "#1b3580" : "#000000", fontWeight: 700, letterSpacing: "0px", lineHeight: "1.1" }}>
-                      ايزي سابورت لخدمات الطباعة
-                    </span>
-                    <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[14px] md:text-[16px]' : 'text-[16px] md:text-[22px]'}`} style={{ color: isZoomed ? "#33a1d9" : "#33a1d9", fontWeight: 800, letterSpacing: "0.5px", lineHeight: "1", textTransform: "uppercase", marginTop: "2px" }}>
+                    <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[14px] md:text-[16px]' : 'text-[16px] md:text-[22px]'}`} style={{ color: isZoomed ? "#33a1d9" : "#33a1d9", fontWeight: 800, letterSpacing: "0.5px", lineHeight: "1", textTransform: "uppercase" }}>
                       EASY SUPPORT
                     </span>
                     <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[8px] md:text-[10px]' : 'text-[10px] md:text-[13px]'}`} style={{ color: isZoomed ? "#1b3580" : "#000000", fontWeight: 700, letterSpacing: "1px", lineHeight: "1.2", textTransform: "uppercase", marginTop: "1px" }}>
@@ -93,10 +90,7 @@ export default function Header() {
                   </>
                 ) : (
                   <>
-                    <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[11px] md:text-[13px]' : 'text-[13px] md:text-[16px]'}`} style={{ color: "#1b3580", fontWeight: 700, letterSpacing: "0px", lineHeight: "1.1" }}>
-                      ايزي سابورت لخدمات الطباعة
-                    </span>
-                    <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[14px] md:text-[16px]' : 'text-[16px] md:text-[22px]'}`} style={{ color: "#33a1d9", fontWeight: 800, letterSpacing: "0.5px", lineHeight: "1", textTransform: "uppercase", marginTop: "2px" }}>
+                    <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[14px] md:text-[16px]' : 'text-[16px] md:text-[22px]'}`} style={{ color: "#33a1d9", fontWeight: 800, letterSpacing: "0.5px", lineHeight: "1", textTransform: "uppercase" }}>
                       EASY SUPPORT
                     </span>
                     <span className={`font-headline transition-all duration-500 ease-in-out ${isZoomed ? 'text-[8px] md:text-[10px]' : 'text-[10px] md:text-[13px]'}`} style={{ color: "#1b3580", fontWeight: 700, letterSpacing: "1px", lineHeight: "1.2", textTransform: "uppercase", marginTop: "1px" }}>

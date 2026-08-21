@@ -34,3 +34,33 @@ alter table public.gallery enable row level security;
 create policy "Allow public read access"
 on public.gallery for select
 using (true);
+
+-- Create homepage_content table
+create table public.homepage_content (
+  key text primary key,
+  value text not null,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- Enable RLS and allow public read access
+alter table public.homepage_content enable row level security;
+
+create policy "Allow public read access"
+on public.homepage_content for select
+using (true);
+
+-- Insert default seed records for homepage content
+insert into public.homepage_content (key, value) values
+('hero_slide1_title', 'We Build the Base,\nYou Build the Brand'),
+('hero_slide1_desc', 'Unlock your business potential in the UAE with expert guidance and seamless government transactions tailored for modern entrepreneurs.'),
+('hero_slide2_title', 'Your Trusted UAE PRO &\nBusiness Setup Partner'),
+('hero_slide2_desc', 'Navigating complex government processes with ease. From visa processing to legal translations, we are your digital concierge.'),
+('about_title', 'Your Premium Gateway to All Government Transactions'),
+('about_desc', 'Easy Support Typing Service is a leading business setup and PRO services provider in Dubai. Operating with great vision and passion, we are committed to customer satisfaction. Our experienced team is familiar with all government departments, ensuring your services are delivered in a timely and efficient manner.'),
+('hero_slide1_image', '/images/fmvmm.png'),
+('hero_slide2_image', '/images/screen.png'),
+('about_image', 'https://lh3.googleusercontent.com/aida-public/AB6AXuBKrivT_tPAxBpT0ZYtQfyHBOELT1XhrPcOUPZaSRNkXR9EeQmOokOgzPpY_B-SK2Wc3I5Y0ALuyQiipCzc4y6troEEp4kCC_swudn3Oec8xIt3x-dFl-7ALFXd7OCRwqP1W4J8lgB6m2AniFpROHDVNuuhCAbcd2c1Q7BEHkPefdagWKFkVSqSuDkYO9UR3P8x8iMmpH8AgqsCD78Bilb0P6QJFJAGyd9PpVqmYkwVhVnMc4Rook4zScykPXCgcTbhACmPqQCztNIL'),
+('why_choose_image', 'https://lh3.googleusercontent.com/aida-public/AB6AXuA4AURzrn-q3Ht-mFbYDeyVMJEpoczJZTY7nOLIIEQo7mnArLuV71td4NpA_qWJD5j9iWEBDRAqr1ztLE8Wepn-WCUhlQC4svlBvGSAMBDndQUeOqz_Ymexq4PLH7TQKISIjQZNCCS_O7ePYtYA5XV69xVy2z8b5-ZnKNfqu4tFtC-nHrghojEc7xVmgKW4A0AqDSPCCyAMkZfhCKp_8m0LPC-rTU2HtbeL2TsTC9ek6lkuFa2KyaBMSKiwbrx6guUsAV9IOzSPTvsj')
+on conflict (key) do update set value = excluded.value;
+
+
