@@ -32,7 +32,7 @@ export default function Home() {
     about_desc: "Easy Support Typing Service is a leading business setup and PRO services provider in Dubai. Operating with great vision and passion, we are committed to customer satisfaction. Our experienced team is familiar with all government departments, ensuring your services are delivered in a timely and efficient manner.",
     hero_slide1_image: "/images/fmvmm.png",
     hero_slide2_image: "/images/screen.png",
-    about_image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBKrivT_tPAxBpT0ZYtQfyHBOELT1XhrPcOUPZaSRNkXR9EeQmOokOgzPpY_B-SK2Wc3I5Y0ALuyQiipCzc4y6troEEp4kCC_swudn3Oec8xIt3x-dFl-7ALFXd7OCRwqP1W4J8lgB6m2AniFpROHDVNuuhCAbcd2c1Q7BEHkPefdagWKFkVSqSuDkYO9UR3P8x8iMmpH8AgqsCD78Bilb0P6QJFJAGyd9PpVqmYkwVhVnMc4Rook4zScykPXCgcTbhACmPqQCztNIL",
+    about_image: "/images/about_desk.jpg",
     why_choose_image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA4AURzrn-q3Ht-mFbYDeyVMJEpoczJZTY7nOLIIEQo7mnArLuV71td4NpA_qWJD5j9iWEBDRAqr1ztLE8Wepn-WCUhlQC4svlBvGSAMBDndQUeOqz_Ymexq4PLH7TQKISIjQZNCCS_O7ePYtYA5XV69xVy2z8b5-ZnKNfqu4tFtC-nHrghojEc7xVmgKW4A0AqDSPCCyAMkZfhCKp_8m0LPC-rTU2HtbeL2TsTC9ek6lkuFa2KyaBMSKiwbrx6guUsAV9IOzSPTvsj",
   });
 
@@ -275,7 +275,7 @@ export default function Home() {
               <img
                 className="w-full h-[500px] object-cover"
                 alt="A clean corporate brochure for Easy Support Typing Services on a business desk"
-                src={content.about_image || "https://lh3.googleusercontent.com/aida-public/AB6AXuBKrivT_tPAxBpT0ZYtQfyHBOELT1XhrPcOUPZaSRNkXR9EeQmOokOgzPpY_B-SK2Wc3I5Y0ALuyQiipCzc4y6troEEp4kCC_swudn3Oec8xIt3x-dFl-7ALFXd7OCRwqP1W4J8lgB6m2AniFpROHDVNuuhCAbcd2c1Q7BEHkPefdagWKFkVSqSuDkYO9UR3P8x8iMmpH8AgqsCD78Bilb0P6QJFJAGyd9PpVqmYkwVhVnMc4Rook4zScykPXCgcTbhACmPqQCztNIL"}
+                src={content.about_image || "/images/about_desk.jpg"}
               />
             </div>
             <div className="absolute -bottom-6 -right-6 glass-card p-6 rounded-lg shadow-lg z-20 hidden md:block border border-primary/10">

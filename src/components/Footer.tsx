@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-on-secondary-fixed text-surface py-10 md:py-16 mt-auto">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 px-6 max-w-container-max mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 px-6 max-w-container-max mx-auto">
         {/* Branding & Contact Column */}
         <div className="space-y-6">
           <div className="flex flex-col items-start" style={{ marginLeft: "4px" }}>
@@ -37,73 +37,60 @@ export default function Footer() {
         {/* Quick Links Column */}
         <div className="space-y-6">
           <h4 className="text-surface font-headline text-lg font-semibold border-b border-surface/20 pb-2">Quick Links</h4>
+          <div className="grid grid-cols-2 gap-4">
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link href="/" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/careers" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
+                  Careers
+                </Link>
+              </li>
+            </ul>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link href="/services" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/gallery" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
+                  Gallery
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Business Inquiries Column */}
+        <div className="space-y-6">
+          <h4 className="text-surface font-headline text-lg font-semibold border-b border-surface/20 pb-2">Business Inquiries</h4>
+          <p className="text-surface-variant opacity-80 text-sm mb-4">Interested in working with us?</p>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link href="/" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
-                Home
-              </Link>
+              <a href="mailto:info@easysupport.ae" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all flex items-center gap-2">
+                <span className="material-symbols-outlined text-base">mail</span>
+                info@easysupport.ae
+              </a>
             </li>
             <li>
-              <Link href="/about" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
-                Our Services
-              </Link>
-            </li>
-            <li>
-              <Link href="/careers" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
-                Careers
-              </Link>
+              <a href="tel:+97142562001" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all flex items-center gap-2">
+                <span className="material-symbols-outlined text-base">call</span>
+                +971 4 256 2001
+              </a>
             </li>
           </ul>
         </div>
 
-        {/* Our Services Column */}
-        <div className="space-y-6">
-          <h4 className="text-surface font-headline text-lg font-semibold border-b border-surface/20 pb-2">Our Services</h4>
-          <ul className="space-y-3 text-sm">
-            <li>
-              <Link href="/services" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
-                Amer &amp; Tasheel Services
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
-                Medical &amp; Emirates ID
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
-                Legal Translation
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="text-surface-variant opacity-80 hover:opacity-100 hover:text-secondary-container transition-all">
-                Company Formation
-              </Link>
-            </li>
-          </ul>
-        </div>
 
-        {/* Newsletter & Contact Details */}
-        <div className="space-y-6">
-          <h4 className="text-surface font-headline text-lg font-semibold border-b border-surface/20 pb-2">Newsletter</h4>
-          <p className="text-surface-variant opacity-80 text-sm mb-4">Stay updated with latest UAE laws and business news.</p>
-          <form className="flex" onSubmit={(e) => e.preventDefault()}>
-            <input
-              className="bg-surface/10 border border-surface/20 rounded-l-lg px-4 py-2 w-full focus:ring-1 focus:ring-secondary focus:border-secondary text-white placeholder-surface/40 text-sm outline-none"
-              placeholder="Email Address"
-              type="email"
-              required
-            />
-            <button className="bg-secondary px-4 py-2 rounded-r-lg hover:bg-secondary-container transition-all flex items-center justify-center" aria-label="Subscribe">
-              <span className="material-symbols-outlined text-surface">send</span>
-            </button>
-          </form>
-        </div>
       </div>
 
       <div className="max-w-container-max mx-auto px-6 mt-16 pt-8 border-t border-surface/10 text-center">
