@@ -299,7 +299,7 @@ export default function About() {
                   Contact Us <span className="material-symbols-outlined">arrow_forward</span>
                 </Link>
                 <a
-                  href="tel:+97140000000"
+                  href="tel:+97145485781"
                   className="px-10 py-4 border-2 border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-all active:scale-95 flex items-center justify-center gap-2"
                 >
                   <span className="material-symbols-outlined">call</span> Call Us Now
