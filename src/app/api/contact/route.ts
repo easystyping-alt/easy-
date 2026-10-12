@@ -17,10 +17,13 @@ export async function POST(req: Request) {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Referer: "https://www.easysupport.ae/contact",
+        Origin: "https://www.easysupport.ae",
       },
       body: JSON.stringify({
-        _subject: `New Easy Support Inquiry: ${subject || "General Consultation"}`,
+        _subject: `New Inquiry from ${name}: ${subject || "General Consultation"}`,
         _replyto: email,
+        _honey: "",
         Name: name,
         Email: email,
         Phone: phone || "Not provided",
