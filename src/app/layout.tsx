@@ -22,6 +22,13 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Easy Support Typing Services | UAE PRO & Business Setup",
   description: "Unlock your business potential in the UAE with expert guidance and seamless government transactions tailored for modern entrepreneurs.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
