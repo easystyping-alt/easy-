@@ -34,7 +34,48 @@ function ContactForm() {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setFeedback(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.error || "Failed to send message.");
+      }
+
+      setFeedback({
+        type: "success",
+        text: "Thank you! Your message has been delivered to info@easysupport.ae. Our specialists will get back to you shortly.",
+      });
+
+      setFormState({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+    } catch (err: any) {
+      setFeedback({
+        type: "error",
+        text: err?.message || "Something went wrong while sending your inquiry. Please try again or contact us via WhatsApp.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     if (serviceParam && serviceMap[serviceParam]) {
@@ -50,22 +91,6 @@ function ContactForm() {
     }
   }, [serviceParam]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormState({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
-      alert("Your message has been sent successfully. One of our corporate specialists will contact you shortly.");
-    }, 1000);
-  };
-
   return (
     <div className="max-w-4xl mx-auto px-6 py-12 md:py-20">
       {/* Page Title */}
@@ -79,6 +104,22 @@ function ContactForm() {
       {/* Contact Form */}
       <div className="bg-surface-container-lowest border border-border-light rounded-2xl p-6 md:p-10 shadow-sm">
         <h2 className="font-headline text-2xl font-bold text-primary mb-6">Send Us a Message</h2>
+
+        {feedback && (
+          <div
+            className={`mb-6 p-4 rounded-xl flex items-start gap-3 border text-sm ${
+              feedback.type === "success"
+                ? "bg-emerald-50 border-emerald-200 text-emerald-800"
+                : "bg-red-50 border-red-200 text-red-800"
+            }`}
+          >
+            <span className="material-symbols-outlined text-xl shrink-0">
+              {feedback.type === "success" ? "check_circle" : "error"}
+            </span>
+            <div className="leading-relaxed">{feedback.text}</div>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="space-y-1">
@@ -154,16 +195,16 @@ function ContactForm() {
 
           <button
             type="submit"
-            disabled={submitted}
+            disabled={submitting}
             className={`w-full py-4 rounded-lg font-bold transition-all shadow-md active:scale-95 text-sm flex items-center justify-center gap-2 ${
-              submitted ? "bg-secondary text-white" : "bg-primary text-white hover:bg-primary-container"
+              submitting ? "bg-secondary text-white cursor-not-allowed" : "bg-primary text-white hover:bg-primary-container"
             }`}
           >
-            <span className="material-symbols-outlined text-lg text-white">
-              {submitted ? "sync" : "send"}
+            <span className={`material-symbols-outlined text-lg text-white ${submitting ? "animate-spin" : ""}`}>
+              {submitting ? "progress_activity" : "send"}
             </span>
             <span className="text-white">
-              {submitted ? "Sending inquiry..." : "Send Message"}
+              {submitting ? "Sending to info@easysupport.ae..." : "Send Message"}
             </span>
           </button>
         </form>
