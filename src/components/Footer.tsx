@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="font-sans" style={{ color: "#ffffff", fontSize: "20px", fontWeight: 600, letterSpacing: "0.2px", lineHeight: "1" }}>EASY SUPPORT TYPING SERVICES</div>
           </div>
           <p className="text-surface-variant opacity-80 font-body text-sm leading-relaxed">
-            Your trusted partner for corporate services, PRO solutions, and business establishment in the Emirates since 2009.
+            Your trusted partner for corporate services, PRO solutions, and business establishment in the Emirates since 2019.
           </p>
           <div className="flex gap-4">
             <a
