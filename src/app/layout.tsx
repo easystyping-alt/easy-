@@ -24,9 +24,10 @@ export const metadata: Metadata = {
   description: "Unlock your business potential in the UAE with expert guidance and seamless government transactions tailored for modern entrepreneurs.",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
+    shortcut: "/favicon.png",
     apple: "/apple-touch-icon.png",
   },
 };
@@ -39,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${hankenGrotesk.variable} ${jetbrainsMono.variable}`}>
       <head>
+        <link rel="icon" type="image/png" href="/favicon.png" sizes="192x192" />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="shortcut icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
